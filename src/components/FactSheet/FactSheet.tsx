@@ -36,7 +36,7 @@ export async function FactSheet() {
   return (
     <Section
       id="facts"
-      ink="blue"
+      tone="deep"
       heading={microcopy.factSheetHeading}
       aside={`${microcopy.asOf} ${formatMonth(buildDate.slice(0, 7))}`}
     >

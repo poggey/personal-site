@@ -17,7 +17,7 @@ export function Contact() {
       id="contact"
       aria-labelledby="contact-heading"
       data-rail-label={microcopy.contactHeading}
-      className={styles.contact}
+      className={`${styles.contact} tone-deep`}
     >
       <Container grid>
         <div className={styles.body}>
@@ -59,7 +59,7 @@ export function SiteFooter() {
     timeZone: "Europe/London",
   });
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} tone-deep`}>
       <Container grid>
         <div className={styles.footRow}>
           <LondonTime label={microcopy.londonTime} />

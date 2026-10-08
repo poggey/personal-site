@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ProgressRail.module.css";
 
 export type Mark = { id: string; label: string };
@@ -13,7 +13,10 @@ export type Mark = { id: string; label: string };
  */
 export function ProgressRail({ marks }: { marks: Mark[] }) {
   const [current, setCurrent] = useState<string | null>(null);
-  const [progress, setProgress] = useState(0);
+  // Progress is written straight to the two bars' transforms, not React state, so
+  // scrolling never re-renders anything.
+  const fill = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-rail-label]"));
@@ -33,7 +36,9 @@ export function ProgressRail({ marks }: { marks: Mark[] }) {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const max = document.documentElement.scrollHeight - window.innerHeight;
-        setProgress(max > 0 ? window.scrollY / max : 0);
+        const progress = max > 0 ? window.scrollY / max : 0;
+        if (fill.current) fill.current.style.transform = `scaleY(${progress})`;
+        if (bar.current) bar.current.style.transform = `scaleX(${progress})`;
       });
     };
     onScroll();
@@ -55,9 +60,9 @@ export function ProgressRail({ marks }: { marks: Mark[] }) {
       aria-label="Sections"
     >
       <div className={styles.track} aria-hidden="true">
-        <div className={styles.fill} style={{ transform: `scaleY(${progress})` }} />
+        <div ref={fill} className={styles.fill} />
       </div>
-      <div className={styles.bar} aria-hidden="true" style={{ transform: `scaleX(${progress})` }} />
+      <div ref={bar} className={styles.bar} aria-hidden="true" />
       <ol className={styles.list} role="list">
         {marks.map((m, i) => (
           <li key={m.id}>

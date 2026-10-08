@@ -113,3 +113,9 @@ Padraig asked for more colour, images and motion, with distinct sections, keepin
 **Numbers (local mobile Lighthouse):** performance 0.89 to 0.95, LCP 2.7 to 3.5s (warning), TBT 70 to 130ms, CLS 0, accessibility, best practices and SEO 100. First-load JS 148KB.
 
 **Left over:** video loops still need ffmpeg; The Slate's slide uses its chart until its live site is public; interest card titles are DRAFT.
+
+## v3 revised: coordinated colour, meaningful motion (2026-10-08)
+
+Padraig's feedback: too bright, less professional, random and overdone; scrolling felt slow; no stretching figures in Key facts.
+
+**Changed:** riso inks replaced by one colour family (paper, mist, deep navy; AA checked); removed misregistered headings, the stretch, word and gather effects, the per-asset colours and the card tilt; hero noise is now biro blue; contact and footer close on navy. Scrolling: removed Lenis (native scrolling), the progress rail no longer re-renders React on scroll, and every scroll-linked change is a transform or opacity. CLAUDE.md v3 and DESIGN-PLAN.md rewritten to match.

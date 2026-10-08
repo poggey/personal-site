@@ -129,63 +129,32 @@
   --biro-wash: var(--night-biro-wash);
 }
 
-/* Riso inks (Design direction v3). Each section is printed in one spot colour, like a
-   risograph print. Text on each ink is the colour that keeps AA:
-   blue #0078BF with white (4.7:1); pink, green and yellow with black (6.8, 6.8, 16.8:1).
-   Inside an ink section the biro becomes the text colour, so links stay readable. */
+/* Section tones (Design direction v3). One family: the paper, a pale tint of the biro
+   blue ("mist") and a deep navy ("deep"), all from the same hue so the page reads as one
+   publication. Colour marks structure, not decoration. Contrast (checked):
+   black on mist 17.3, pencil on mist 6.2, biro on mist 6.0;
+   white on deep 16.9, pencil on deep 8.5, biro on deep 7.1. */
 :root {
-  --ink-blue: #0078bf;
-  --ink-pink: #ff48b0;
-  --ink-green: #00a95c;
-  --ink-yellow: #ffe800;
-  --ink-orange: #ff6c2f;
-  --ink-teal: #00838a;
-  /* How a second ink overprints: multiply on white paper, screen on black. */
-  --overprint: multiply;
+  --tone-deep: #0f1b3d;
+  --tone-mist: #e6e9f1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --overprint: screen;
-  }
-}
-
-:root[data-theme="dark"],
-.night {
-  --overprint: screen;
-}
-
-.ink-blue,
-.ink-pink,
-.ink-green,
-.ink-yellow {
+.tone-mist {
   color-scheme: light;
-  --overprint: multiply;
-  --paper: var(--ink);
+  --paper: var(--tone-mist);
   --print: #000000;
-  --pencil: #1f1f1f;
-  --rule: rgb(0 0 0 / 0.28);
-  --biro: #000000;
-  --biro-wash: rgb(0 0 0 / 0.1);
+  --pencil: #4d5466;
+  --rule: #c9cedb;
+  --biro: #2340e0;
+  --biro-wash: rgb(35 64 224 / 0.1);
 }
 
-.ink-blue {
-  --ink: var(--ink-blue);
+.tone-deep {
+  color-scheme: dark;
+  --paper: var(--tone-deep);
   --print: #ffffff;
-  --pencil: #ffffff;
-  --rule: rgb(255 255 255 / 0.45);
-  --biro: #ffffff;
-  --biro-wash: rgb(255 255 255 / 0.14);
-}
-
-.ink-pink {
-  --ink: var(--ink-pink);
-}
-
-.ink-green {
-  --ink: var(--ink-green);
-}
-
-.ink-yellow {
-  --ink: var(--ink-yellow);
+  --pencil: #aeb8d6;
+  --rule: #2a3760;
+  --biro: #8fa2ff;
+  --biro-wash: rgb(143 162 255 / 0.16);
 }

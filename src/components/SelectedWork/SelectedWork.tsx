@@ -62,7 +62,7 @@ function Slide({ project, index, total }: { project: Project; index: number; tot
     : null;
   return (
     <article
-      className={`${styles.slide} ${tokens ? "" : "ink-blue"}`}
+      className={`${styles.slide} ${tokens ? "" : "tone-deep"}`}
       style={tokens ?? undefined}
       aria-labelledby={titleId}
     >
@@ -104,7 +104,7 @@ function Slide({ project, index, total }: { project: Project; index: number; tot
             image={shot}
             alt={project.preview.alt}
             ink={project.palette?.text ?? "#ffffff"}
-            paper={project.palette?.background ?? "#0078bf"}
+            paper={project.palette?.background ?? "#0f1b3d"}
           />
         ) : null}
         {visual ? (
@@ -135,11 +135,7 @@ export function SelectedWork() {
     >
       <div className={styles.track} data-gallery-track>
         <div className={styles.intro}>
-          <h2
-            id="work-heading"
-            className={styles.heading}
-            data-text={microcopy.selectedWorkHeading}
-          >
+          <h2 id="work-heading" className={styles.heading}>
             {microcopy.selectedWorkHeading}
           </h2>
           <ol className={styles.contents}>

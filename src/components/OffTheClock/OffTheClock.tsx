@@ -6,8 +6,8 @@ import styles from "./OffTheClock.module.css";
 
 const { interests, projects, microcopy } = content;
 
-// The cards cycle through the riso inks, so the row reads as a set of printed cards.
-const INKS = ["pink", "yellow", "green", "blue"] as const;
+// Cards alternate between the page's two tones, so the row reads as one set.
+const TONES = ["deep", "mist"] as const;
 
 /** The person, one card each: a word set large, one line beneath. A row you can drag. */
 export function OffTheClock() {
@@ -17,7 +17,7 @@ export function OffTheClock() {
         {interests.map((item, i) => {
           const project = item.project ? projects.find((p) => p.slug === item.project) : null;
           return (
-            <li key={item.id} className={`${styles.card} ink-${INKS[i % INKS.length]}`}>
+            <li key={item.id} className={`${styles.card} tone-${TONES[i % TONES.length]}`}>
               <p className={styles.text}>{item.text}</p>
               {project ? (
                 <Link href={`/work/${project.slug}`} scroll={false} className={styles.link}>

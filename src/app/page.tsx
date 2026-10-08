@@ -15,7 +15,6 @@ import { ProgressRail } from "@/components/ProgressRail/ProgressRail";
 import { ProjectIndex } from "@/components/ProjectIndex/ProjectIndex";
 import { SelectedWork } from "@/components/SelectedWork/SelectedWork";
 import { SiteHeader } from "@/components/SiteHeader/SiteHeader";
-import { SmoothScroll } from "@/components/SmoothScroll/SmoothScroll";
 import { Specialism } from "@/components/Specialism/Specialism";
 import { Toaster } from "@/components/Toast/Toaster";
 import { Toolkit } from "@/components/Toolkit/Toolkit";
@@ -94,7 +93,6 @@ export default function Home() {
       <SiteFooter />
       <PaletteHost data={paletteData} />
       <Toaster />
-      <SmoothScroll />
       <MotionDirector />
     </>
   );

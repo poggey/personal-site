@@ -29,7 +29,7 @@ The full brief is `docs/private/WHITEPAPER.md`. This file is the constitution. *
 
 ## Approved stack
 
-Next.js (App Router) with TypeScript strict; CSS Modules plus CSS custom properties (no Tailwind); `gsap` (ScrollTrigger, Flip); `lenis`; `ogl`; `d3-scale`, `d3-shape`, `d3-array` only; `zod`; MDX (`@next/mdx` or `next-mdx-remote`); `@vercel/analytics`; `vitest`; `@playwright/test`; `@axe-core/playwright`; `@lhci/cli`; `prettier`; `eslint`. Fonts through `next/font/google` (self-hosted at build). Python 3 (pandas, numpy, yfinance) for data export scripts in `scripts/` only.
+Next.js (App Router) with TypeScript strict; CSS Modules plus CSS custom properties (no Tailwind); `gsap` (ScrollTrigger, Flip); `ogl`; `d3-scale`, `d3-shape`, `d3-array` only; `zod`; MDX (`@next/mdx` or `next-mdx-remote`); `@vercel/analytics`; `vitest`; `@playwright/test`; `@axe-core/playwright`; `@lhci/cli`; `prettier`; `eslint`. Fonts through `next/font/google` (self-hosted at build). Python 3 (pandas, numpy, yfinance) for data export scripts in `scripts/` only.
 
 ## Structure
 
@@ -56,12 +56,12 @@ Routes: `/work/[slug]` case-study panels (open over the page via an intercepting
 
 ## Design direction v3 (2026-10-08, supersedes v2 on colour, sections and motion)
 
-Padraig asked for the page to be a showcase of design: more colour, real images, distinct sections and movement, while staying clean. v2's type, grid, copy rules and "no generic AI traits" still hold. What changes:
+Padraig asked for more colour, real images, distinct sections and movement, then for it to be coordinated and professional, with motion only where it means something. v2's type, grid, copy rules and "no generic AI traits" still hold. What changes:
 
-- **Riso print.** The page is printed in spot-colour inks: blue `#0078BF` (white text), fluorescent pink `#FF48B0`, green `#00A95C` and yellow `#FFE800` (black text); all AA. Inked sections are full-bleed (fact sheet blue, Positions pink, Islamic finance green, Toolkit yellow); the interlude stays black; the rest stay on paper. Section headings carry a second ink slightly out of register.
-- **Images.** Real screenshots only, shown as a halftone in the slide's ink that resolves into the image as it scrolls in. No stock or generated imagery on the page.
-- **Selected work is a gallery.** A pinned, sideways-scrolling row of full-screen slides on desktop, each in its project's palette; a native swipe row on phones; a plain stack without motion.
-- **Motion: one signature move per section**, tied to its content and scrubbed to scroll (`src/components/Motion/MotionDirector.tsx`): heading register, figures widening on the width axis, bars drawing, matrix dots gathering, a statement darkening word by word, halftone resolving, the gallery, the contact dot. Still banned: fade-and-slide on everything, count-ups, text scrambles, custom cursors. The resting CSS is always the finished state, so no-JS and reduced motion show everything static.
+- **One colour family.** Paper, plus two tones of the biro blue: "mist" `#E6E9F1` (pale) and "deep" `#0F1B3D` (navy), all AA (see `tokens.css`). Colour marks structure: deep for the opening facts and the closing contact (the bookends), mist for the two reference sections (Positions, Toolkit), black for the interlude. The only other colours are each case study's own palette, inside the gallery and its panel.
+- **Images.** Real screenshots only, arriving as a halftone that resolves into the image (noise to signal). No stock or generated imagery on the page.
+- **Selected work is a gallery.** Pinned and sideways on desktop, a swipe row on phones, a plain stack without motion.
+- **Motion only where it carries meaning:** the hero resolve (blue noise settling into black type), the gallery, halftone screenshots resolving, bars drawing on the Positions time axis and the marks out of 100, and the contact dot. Every scroll-linked change is a transform or opacity. No smooth-scroll library: native scrolling. Still banned: fade-and-slide on everything, count-ups, text scrambles, custom cursors, decorative effects that don't map to content.
 - **Budgets unchanged**, except Lighthouse performance score and LCP are warnings (the intro stays, Padraig's call); first-load JS is checked by `npm run check:bundle`.
 
 ## Design direction v2 (supersedes the white paper on colour, type, labels and motion)

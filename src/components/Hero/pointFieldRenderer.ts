@@ -29,12 +29,16 @@ const fragment = /* glsl */ `
   void main() {
     // Round points: discard the corners of each square sprite.
     if (length(gl_PointCoord - 0.5) > 0.5) discard;
-    // Noise is printed in pink ink; a point turns to print as it lands on its letter.
+    // Noise is biro blue; a point turns to print as it lands on its letter.
     gl_FragColor = vec4(mix(uColor, uNoiseColor, vNoise), uAlpha);
   }
 `;
 
+/** "rgb(r, g, b)" or "#rrggbb" to WebGL's 0 to 1 channels. */
 function parseColor(css: string): [number, number, number] {
+  const hex = css.trim().match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+  if (hex)
+    return [1, 2, 3].map((i) => parseInt(hex[i] ?? "0", 16) / 255) as [number, number, number];
   const m = css.match(/\d+(\.\d+)?/g)?.map(Number) ?? [0, 0, 0];
   return [(m[0] ?? 0) / 255, (m[1] ?? 0) / 255, (m[2] ?? 0) / 255];
 }
@@ -123,8 +127,10 @@ export function startPointField(opts: PointFieldOptions): PointFieldHandle {
       uResolution: { value: [box.width, box.height] },
       uSize: { value: pointSize(sample.spacing) },
       uColor: { value: parseColor(getComputedStyle(opts.colorSource).color) },
-      // The riso pink from tokens.css (--ink-pink).
-      uNoiseColor: { value: parseColor("rgb(255, 72, 176)") },
+      // Noise is the biro blue (--biro); points turn to print as they settle.
+      uNoiseColor: {
+        value: parseColor(getComputedStyle(opts.colorSource).getPropertyValue("--biro")),
+      },
       uAlpha: { value: 1 },
     },
   });

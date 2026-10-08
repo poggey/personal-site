@@ -3,18 +3,17 @@
 import { useEffect } from "react";
 
 /**
- * Every section's one signature move, in one place. Components only mark elements with
+ * The page's scroll-linked moves, in one place. Components only mark elements with
  * data-motion="..."; this loads GSAP and ScrollTrigger after the page has loaded and wires
  * each mark to the scroll. The page's resting CSS is always the finished state, so with no
  * JavaScript, or with reduced motion, nothing is hidden and nothing moves.
  *
- *   register  a section's second ink slides into register as it arrives
- *   stretch   a figure widens along Archivo's width axis
- *   draw-x    a bar draws from its left edge
- *   gather    scattered dots settle into their grid
- *   words     a statement darkens word by word
- *   resolve   a halftone image resolves into the real screenshot
- *   gallery   a row of slides scrolls sideways while the section is pinned (desktop)
+ * Only moves that say something about their content:
+ *   draw-x    a bar draws from its left edge (time on the Positions axis, marks out of 100)
+ *   resolve   a halftone image resolves into the real screenshot (noise to signal)
+ *   gallery   the case studies scroll sideways while the section is pinned (desktop)
+ * Everything animated is a transform or opacity, so the browser can keep it off the
+ * main thread and scrolling stays smooth.
  */
 export function MotionDirector() {
   useEffect(() => {
@@ -34,31 +33,6 @@ export function MotionDirector() {
 
       const mm = gsap.matchMedia();
       const ctx = gsap.context(() => {
-        for (const section of all("register")) {
-          gsap.fromTo(
-            section,
-            { "--reg": "16px" },
-            {
-              "--reg": "2px",
-              ease: "none",
-              scrollTrigger: { trigger: section, start: "top 95%", end: "top 35%", scrub: true },
-            },
-          );
-        }
-
-        for (const el of all("stretch")) {
-          gsap.fromTo(
-            el,
-            { "--wdth": 62, "--wght": 300 },
-            {
-              "--wdth": 100,
-              "--wght": 700,
-              ease: "none",
-              scrollTrigger: { trigger: el, start: "top 92%", end: "top 60%", scrub: true },
-            },
-          );
-        }
-
         // One trigger per group of bars (a chart), not one per bar: fewer page measurements.
         const barGroups = new Map<Element, HTMLElement[]>();
         for (const bar of all("draw-x")) {
@@ -74,41 +48,6 @@ export function MotionDirector() {
               ease: "none",
               stagger: 0.08,
               scrollTrigger: { trigger: group, start: "top 85%", end: "top 40%", scrub: true },
-            },
-          );
-        }
-
-        for (const group of all("gather")) {
-          const dots = Array.from(group.querySelectorAll<HTMLElement>("[data-dot]"));
-          // A fixed scatter (golden-angle spiral), so it looks the same on every visit.
-          // One tween with per-dot start values, driven by a single trigger.
-          gsap.fromTo(
-            dots,
-            {
-              x: (i: number) => Math.cos(i * 2.39996) * (60 + ((i * 37) % 140)),
-              y: (i: number) => Math.sin(i * 2.39996) * (60 + ((i * 37) % 140)),
-              opacity: 0.2,
-            },
-            {
-              x: 0,
-              y: 0,
-              opacity: 1,
-              ease: "none",
-              scrollTrigger: { trigger: group, start: "top 85%", end: "top 30%", scrub: true },
-            },
-          );
-        }
-
-        for (const el of all("words")) {
-          const words = el.querySelectorAll("[data-word]");
-          gsap.fromTo(
-            words,
-            { opacity: 0.55 },
-            {
-              opacity: 1,
-              stagger: 0.1,
-              ease: "none",
-              scrollTrigger: { trigger: el, start: "top 85%", end: "bottom 55%", scrub: true },
             },
           );
         }

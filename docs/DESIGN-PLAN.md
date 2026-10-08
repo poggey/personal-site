@@ -141,23 +141,23 @@ Return 6.1%  Volatility 9.8%  Sharpe 0.21   Target: within 0.05 of 0.76
 
 **Removed to earn its place:** the hairline grid overlay in the hero from the white paper. The grid is felt through alignment; drawing it was decoration.
 
-## v3: riso print and gallery (2026-10-08)
+## v3: one colour family, motion with meaning (2026-10-08)
 
-Padraig wanted more colour, real images and motion, with distinct sections, keeping the clean structure. The concept stays Resolution, now as a risograph print: noise is pink ink, signal is black.
+A first v3 used four riso inks and a move per section. Padraig found it too bright and random: colour and motion that didn't map to content. Revised:
 
-| Section         | Ink                    | Signature move                                                      |
-| --------------- | ---------------------- | ------------------------------------------------------------------- |
-| Hero            | paper                  | points scatter in pink (noise) and turn black as they land (signal) |
-| Fact sheet      | blue, white text       | each figure widens along Archivo's width axis as its row arrives    |
-| Approach        | paper                  | heading's second ink slides into register                           |
-| Selected work   | each project's palette | pinned sideways gallery; screenshots resolve from halftone          |
-| Beat my Sharpe  | black                  | each asset in its own ink                                           |
-| Index           | paper                  | cursor-following preview                                            |
-| Positions       | pink                   | bars draw to scroll                                                 |
-| Islamic finance | green                  | the finding darkens word by word                                    |
-| Education       | paper                  | mark bars draw                                                      |
-| Toolkit         | yellow                 | matrix dots gather into the grid                                    |
-| Off the clock   | ink cards              | a draggable row of printed cards                                    |
-| Contact         | paper                  | a scatter collapses into one biro dot                               |
+| Section         | Ground                 | Move (only where it means something)                       |
+| --------------- | ---------------------- | ---------------------------------------------------------- |
+| Hero            | paper                  | blue noise settles into black type                         |
+| Key facts       | deep navy              | none: figures sit still                                    |
+| Approach        | paper                  | none                                                       |
+| Selected work   | each project's palette | pinned sideways gallery; screenshots resolve from halftone |
+| Beat my Sharpe  | black                  | the game itself                                            |
+| Index           | paper                  | cursor preview                                             |
+| Positions       | mist                   | bars draw along the time axis                              |
+| Islamic finance | paper                  | none                                                       |
+| Education       | paper                  | marks draw to their value out of 100                       |
+| Toolkit         | mist                   | hover highlights only                                      |
+| Off the clock   | cards in deep and mist | drag the row                                               |
+| Contact         | deep navy              | the scatter collapses into one dot                         |
 
-**Removed to earn its place:** a planned grain texture over the inks. The halftone and misregistration already say "print".
+**Removed:** the four inks, misregistered headings, stretching figures, word-by-word text, gathering dots, card tilt and Lenis smooth scrolling (it made scrolling feel late).

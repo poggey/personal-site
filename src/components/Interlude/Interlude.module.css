@@ -218,16 +218,8 @@
   height: var(--target);
   margin: 0;
   background: transparent;
-  accent-color: var(--asset, var(--biro));
+  accent-color: var(--biro);
   cursor: pointer;
-}
-
-.sliderName::before {
-  content: "";
-  width: 0.7em;
-  height: 0.7em;
-  border-radius: 50%;
-  background: var(--asset);
 }
 
 .buttons {

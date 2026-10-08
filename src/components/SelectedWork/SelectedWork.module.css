@@ -29,17 +29,6 @@
   font-variation-settings: "wdth" 70;
   line-height: 0.85;
   letter-spacing: -0.02em;
-  isolation: isolate;
-}
-
-.heading::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  color: var(--ink-pink);
-  transform: translate(var(--reg, 4px), calc(var(--reg, 4px) * 0.6));
-  mix-blend-mode: var(--overprint);
 }
 
 .contents {

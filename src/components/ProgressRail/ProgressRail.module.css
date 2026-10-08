@@ -11,6 +11,7 @@
   height: 2px;
   background: var(--biro);
   transform-origin: left;
+  transform: scaleX(0);
 }
 
 .track,
@@ -46,6 +47,7 @@
     height: 100%;
     background: var(--print);
     transform-origin: top;
+    transform: scaleY(0);
   }
 
   .list {

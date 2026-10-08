@@ -21,7 +21,7 @@
   user-select: none;
 }
 
-/* A printed card: the ink is the card. The big word sits at the foot, cropped by the edge. */
+/* A card in one of the two tones. The big word sits at the foot, cropped by the edge. */
 .card {
   position: relative;
   display: flex;
@@ -32,11 +32,6 @@
   scroll-snap-align: start;
   background: var(--paper);
   color: var(--print);
-  transition: transform var(--duration-base) var(--ease-settle);
-}
-
-.card:hover {
-  transform: rotate(-1.5deg) translateY(-6px);
 }
 
 .text {
