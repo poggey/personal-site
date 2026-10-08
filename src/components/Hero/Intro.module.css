@@ -1,0 +1,38 @@
+.intro {
+  display: none;
+}
+
+/* Only when the boot script asked for it. pointer-events stay off, so a reader who
+   doesn't wait can still scroll and click straight away. */
+:global(html.intro) .intro {
+  display: flex;
+  align-items: flex-end;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  padding: var(--margin);
+  background: var(--paper);
+  pointer-events: none;
+  animation: intro-out var(--duration-base) var(--ease-settle) 1.8s forwards;
+}
+
+:global(html.intro-done) .intro {
+  animation: intro-out var(--duration-base) var(--ease-settle) forwards;
+}
+
+.counter {
+  font-family: var(--font-sans);
+  font-size: var(--step-1);
+  font-weight: 500;
+}
+
+.number {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

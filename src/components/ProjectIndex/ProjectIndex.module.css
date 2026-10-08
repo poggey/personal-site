@@ -1,0 +1,145 @@
+.wrap {
+  position: relative;
+}
+
+.list {
+  margin: 0;
+  border-top: 1px solid var(--print);
+}
+
+.list li {
+  border-bottom: 1px solid var(--rule);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "title year"
+    "type type"
+    "point point";
+  column-gap: var(--space-2);
+  row-gap: 0.25em;
+  min-height: var(--target);
+  padding-block: var(--space-2);
+  color: var(--print);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-settle);
+}
+
+.row:hover,
+.row:focus-visible {
+  background: var(--biro-wash);
+}
+
+.title {
+  grid-area: title;
+  font-family: var(--font-sans);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.row:hover .title {
+  color: var(--biro);
+}
+
+.type,
+.stack,
+.status,
+.year {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.type {
+  grid-area: type;
+}
+
+.year {
+  grid-area: year;
+}
+
+.stack,
+.status {
+  display: none;
+}
+
+/* On touch the talking point is always visible: there is no hover to reveal it. */
+.point {
+  grid-area: point;
+  font-size: var(--step--1);
+  color: var(--print);
+}
+
+@media (min-width: 1024px) {
+  .row {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 3fr) 4ch minmax(0, 3fr) minmax(0, 2fr);
+    grid-template-areas:
+      "title type year stack status"
+      "point point point point point";
+    align-items: baseline;
+    padding-inline: var(--space-1);
+  }
+
+  .stack,
+  .status {
+    display: block;
+  }
+
+  .stack {
+    grid-area: stack;
+  }
+
+  .status {
+    grid-area: status;
+    text-align: right;
+  }
+}
+
+/* With a mouse, the talking point waits for hover or focus. */
+@media (hover: hover) and (pointer: fine) {
+  .point {
+    display: none;
+  }
+
+  .row:hover .point,
+  .row:focus-visible .point {
+    display: block;
+  }
+}
+
+/* At 10 min everything is open, whatever the pointer. */
+:global(html[data-depth="10m"]) .point {
+  display: block;
+}
+
+.preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 320px;
+  pointer-events: none;
+  animation: clip-in var(--duration-base) var(--ease-settle);
+}
+
+.preview img {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes clip-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preview {
+    display: none;
+  }
+}

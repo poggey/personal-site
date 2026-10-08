@@ -22,6 +22,8 @@ export const linkSchema = z.object({
 export const depthTextSchema = z.object({
   text: z.string().min(1),
   depth: depthSchema,
+  /** The CV's own wording, where the site says more than the one-page CV has room for. */
+  cvText: z.string().min(1).optional(),
 });
 
 export const profileSchema = z.object({
@@ -135,6 +137,8 @@ export const projectSchema = z
     featured: z.boolean(),
     /** Not public: described on the site but never linked. */
     privateOnly: z.boolean(),
+    /** A real screenshot of the project for the Index hover preview, in public/images/. */
+    preview: z.object({ src: z.string().startsWith("/"), alt: z.string().min(1) }).optional(),
   })
   .refine((p) => p.privateOnly || p.links.length > 0, {
     message: "A public project needs at least one link",

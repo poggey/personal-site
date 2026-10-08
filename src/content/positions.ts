@@ -24,6 +24,7 @@ export const positions = positionSchema.array().parse([
     outcomes: [
       {
         text: "Designed a council website template in Figma, now used by 650+ UK councils, and led the migration onto it.",
+        cvText: "Designed a council website template in Figma, now used by 650+ UK councils",
         depth: "30s",
       },
       {

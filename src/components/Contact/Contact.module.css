@@ -1,0 +1,95 @@
+.contact {
+  padding-block: var(--section-gap);
+}
+
+.body {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.heading {
+  font-size: var(--step-4);
+  font-weight: 650;
+}
+
+.email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+
+.address {
+  font-family: var(--font-sans);
+  /* Capped by viewport width so the address never breaks mid-word on a phone. */
+  font-size: min(var(--step-5), 6.4vw);
+  font-weight: 650;
+  font-variation-settings: "wdth" 85;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.copy {
+  min-height: var(--target);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 550;
+  text-decoration: underline;
+  text-decoration-color: var(--biro);
+  text-underline-offset: 0.3em;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+}
+
+.availability {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.footer {
+  padding-block: var(--space-4) var(--space-8);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.footRow {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-6);
+}
+
+.footRow a {
+  color: var(--pencil);
+  text-decoration-color: var(--biro);
+}
+
+@media (min-width: 1024px) {
+  .body {
+    grid-column: 4 / -1;
+  }
+
+  .footRow {
+    grid-column: 4 / -1;
+  }
+}

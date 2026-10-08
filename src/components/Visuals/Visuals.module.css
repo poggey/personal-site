@@ -1,0 +1,196 @@
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-sans);
+}
+
+.bar {
+  fill: var(--rule);
+}
+
+.tail,
+.barStrong {
+  fill: var(--print);
+}
+
+.axis {
+  stroke: var(--print);
+  stroke-width: 1;
+}
+
+.tick,
+.label {
+  fill: var(--pencil);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.label {
+  fill: var(--print);
+  font-weight: 550;
+}
+
+/* Biro marks: the figure the reader controls or the point being made. */
+.marker line {
+  stroke: var(--biro);
+  stroke-width: 2;
+}
+
+.marker circle {
+  fill: var(--biro);
+}
+
+.marker text,
+.markerSoft text {
+  fill: var(--print);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.markerSoft line {
+  stroke: var(--print);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.markerSoft circle {
+  fill: var(--paper);
+  stroke: var(--print);
+  stroke-width: 1.5;
+}
+
+.risk {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.levels {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.legend {
+  float: left;
+  margin-right: var(--space-1);
+  padding: 0;
+  color: var(--pencil);
+}
+
+.level {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  min-width: var(--target);
+  justify-content: center;
+  cursor: pointer;
+}
+
+.level input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.level span {
+  border-bottom: 2px solid transparent;
+}
+
+.level input:checked + span {
+  color: var(--biro);
+  border-bottom-color: var(--biro);
+}
+
+.level input:focus-visible + span {
+  outline: 2px solid var(--biro);
+  outline-offset: 4px;
+}
+
+/* Stirling clipping: a small piece of the real paper, in its own palette. */
+.clipping {
+  max-width: 30rem;
+  padding: var(--space-3);
+  background: var(--paper);
+  color: var(--print);
+  font-family: var(--font-sans);
+}
+
+.clipMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 2px solid var(--print);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.clipHeadline {
+  margin-block: var(--space-2) var(--space-3);
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  line-height: 1.2;
+}
+
+.ledger {
+  width: 100%;
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.ledger tr {
+  border-top: 1px solid var(--rule);
+}
+
+.ledger th {
+  padding-block: 0.5em;
+  text-align: left;
+  font-weight: 500;
+}
+
+.ledger td {
+  text-align: right;
+  padding-left: var(--space-2);
+  white-space: nowrap;
+}
+
+.figures {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+.figures dt {
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.figures dd {
+  margin: 0;
+  font-size: var(--step-5);
+  font-weight: 700;
+  font-variation-settings: "wdth" 80;
+  line-height: 1;
+}
+
+/* SVG text scales with the chart. On a phone the chart is half its drawn width, so the
+   labels are drawn larger to land near 11px on screen. */
+@media (max-width: 767px) {
+  .tick,
+  .label,
+  .marker text,
+  .markerSoft text {
+    font-size: 22px;
+  }
+}

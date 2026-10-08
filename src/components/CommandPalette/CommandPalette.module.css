@@ -1,0 +1,126 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: var(--target);
+  padding: 0 0.6em;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--print);
+}
+
+.hint {
+  display: none;
+  min-width: 1.4em;
+  padding: 0 0.3em;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-control);
+  font-family: var(--font-sans);
+  font-size: 0.85em;
+  color: var(--pencil);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hint {
+    display: inline-block;
+  }
+}
+
+.dialog {
+  width: min(36rem, calc(100vw - 2 * var(--margin)));
+  max-height: min(32rem, 80vh);
+  margin: 12vh auto auto;
+  padding: 0;
+  border: 0;
+  background: var(--paper);
+  color: var(--print);
+  /* The panel is one of the two things allowed a shadow (with the focus ring). */
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.24);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.35);
+}
+
+.panel {
+  display: grid;
+  font-family: var(--font-sans);
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  font-size: var(--step-1);
+  outline: none;
+}
+
+.input:focus-visible {
+  outline: none;
+  border-bottom-color: var(--biro);
+}
+
+.list {
+  max-height: min(24rem, 60vh);
+  margin: 0;
+  padding: var(--space-1) 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: var(--target);
+  align-items: center;
+  padding: 0 var(--space-3);
+  cursor: pointer;
+  font-size: var(--step--1);
+}
+
+.option[aria-selected="true"] {
+  background: var(--biro-wash);
+  color: var(--biro);
+}
+
+.group {
+  color: var(--pencil);
+}
+
+.empty {
+  padding: var(--space-2) var(--space-3);
+  color: var(--pencil);
+  font-size: var(--step--1);
+}
+
+.title {
+  padding: var(--space-2) var(--space-3) 0;
+  font-size: var(--step-1);
+}
+
+.shortcuts {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  font-size: var(--step--1);
+}
+
+.shortcuts div {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+}
+
+.shortcuts dd {
+  margin: 0;
+}
+
+.shortcuts kbd {
+  font-family: var(--font-sans);
+  font-weight: 600;
+}

@@ -1,0 +1,159 @@
+/* Rows: text above, the time track beneath. At desktop the text and track share a line. */
+.chart {
+  position: relative;
+}
+
+.axis {
+  position: relative;
+  height: 1.5rem;
+  border-bottom: 1px solid var(--print);
+  font-family: var(--font-sans);
+  font-size: var(--step--2);
+  color: var(--pencil);
+}
+
+.tick {
+  position: absolute;
+  bottom: 0.3rem;
+  transform: translateX(-50%);
+}
+
+.tick:first-child {
+  transform: none;
+}
+
+.rows {
+  margin: 0;
+}
+
+.row {
+  border-bottom: 1px solid var(--rule);
+  transition: opacity var(--duration-base) var(--ease-settle);
+}
+
+.chart[data-has-open="true"] .row:not([data-open="true"]) {
+  opacity: 0.35;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "who dates"
+    "track track";
+  row-gap: var(--space-1);
+  column-gap: var(--space-2);
+  width: 100%;
+  min-height: var(--target);
+  padding: var(--space-2) 0 var(--space-1);
+  border: 0;
+  background: none;
+  text-align: left;
+}
+
+.head:hover .employer {
+  color: var(--biro);
+}
+
+.who {
+  grid-area: who;
+  display: flex;
+  flex-direction: column;
+}
+
+.employer {
+  font-family: var(--font-sans);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.role {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.dates {
+  grid-area: dates;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+  white-space: nowrap;
+}
+
+.track {
+  grid-area: track;
+  position: relative;
+  height: 12px;
+}
+
+.bar {
+  position: absolute;
+  top: 3px;
+  height: 6px;
+  min-width: 6px;
+  background: var(--print);
+}
+
+/* The current role runs to the build date; its open right end is a gap, not a cap. */
+.current {
+  border-right: 3px solid var(--paper);
+}
+
+.point {
+  position: absolute;
+  top: 1px;
+  width: 10px;
+  height: 10px;
+  background: var(--print);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.row[data-open="true"] .bar,
+.row[data-open="true"] .point {
+  background: var(--biro);
+}
+
+.headline,
+.more ul {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-2);
+  max-width: var(--measure);
+  font-size: var(--step-0);
+}
+
+.more {
+  display: none;
+}
+
+.more[data-open="true"],
+:global(html[data-depth="10m"]) .more {
+  display: block;
+}
+
+/* Desktop: text on the left 40%, the track beside it, so every bar shares one axis. */
+@media (min-width: 1024px) {
+  .axis {
+    margin-left: 42%;
+  }
+
+  .head {
+    grid-template-columns: calc(42% - var(--space-2)) minmax(0, 1fr);
+    grid-template-areas:
+      "who track"
+      "dates track";
+    align-items: center;
+    row-gap: 0;
+  }
+
+  .track {
+    margin-left: 0;
+  }
+
+  .headline,
+  .more ul {
+    padding-right: 58%;
+    max-width: none;
+  }
+}

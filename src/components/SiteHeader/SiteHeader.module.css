@@ -1,0 +1,17 @@
+.header {
+  position: fixed;
+  z-index: var(--z-header);
+  top: 0;
+  right: 0;
+  padding: var(--space-1) calc(var(--margin) - 0.6em) 0 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-inline: var(--space-1) 0;
+  background: var(--paper);
+}
+
+/* Inside the dark interlude, the controls stay legible because they carry their own paper. */

@@ -1,0 +1,119 @@
+.study {
+  background: var(--paper);
+  color: var(--print);
+  padding: var(--space-8) var(--margin) var(--space-12);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.header,
+.prose,
+.facts {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.type {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.title {
+  margin-top: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--step-5);
+  font-weight: 700;
+  font-variation-settings: "wdth" 90;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.question {
+  margin-top: var(--space-3);
+  font-size: var(--step-2);
+  line-height: 1.3;
+}
+
+.result {
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  font-weight: 550;
+}
+
+.prose {
+  margin-top: var(--space-8);
+}
+
+.prose h2,
+.prose h3 {
+  margin-top: var(--space-6);
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+
+.prose h2:first-child,
+.prose h3:first-child {
+  margin-top: 0;
+}
+
+.prose p {
+  margin-top: var(--space-2);
+  max-width: var(--measure);
+}
+
+.prose a {
+  color: var(--biro);
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.facts dt {
+  color: var(--pencil);
+}
+
+.facts dd {
+  margin: 0.25em 0 0;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-3);
+  margin: 0;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  color: var(--biro);
+}
+
+.ask dd {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+}
+
+/* A real screenshot of the live project, framed plainly: no device mock-up. */
+.shot {
+  max-width: 44rem;
+  margin: var(--space-6) auto 0;
+}
+
+.shot img {
+  width: 100%;
+  height: auto;
+  outline: 1px solid var(--rule);
+}

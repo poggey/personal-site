@@ -1,0 +1,88 @@
+.layout {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.text {
+  display: grid;
+  gap: var(--space-2);
+  max-width: var(--measure);
+}
+
+.summary {
+  font-family: var(--font-sans);
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.cause,
+.extra {
+  color: var(--pencil);
+}
+
+.glossary {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--step--1);
+}
+
+.glossary dt {
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.glossary dd {
+  margin: 0;
+  color: var(--pencil);
+}
+
+.figure {
+  max-width: 30rem;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+.rowLabel,
+.value {
+  fill: var(--print);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.tick {
+  fill: var(--pencil);
+  font-size: 12px;
+}
+
+.axis {
+  stroke: var(--print);
+}
+
+.stem {
+  stroke: var(--print);
+  stroke-width: 1.5;
+}
+
+.base {
+  fill: var(--paper);
+  stroke: var(--print);
+  stroke-width: 1.5;
+}
+
+.dot {
+  fill: var(--biro);
+}
+
+@media (max-width: 767px) {
+  .rowLabel,
+  .value,
+  .tick {
+    font-size: 17px;
+  }
+}

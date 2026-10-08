@@ -1,0 +1,105 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  padding-top: calc(var(--space-8) + var(--space-2));
+  padding-bottom: var(--space-4);
+}
+
+.grid {
+  align-content: space-between;
+  row-gap: var(--space-6);
+}
+
+.kicker {
+  grid-column: 1 / -1;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  line-height: 1.45;
+  color: var(--pencil);
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--step-hero);
+  font-weight: 800;
+  font-variation-settings: "wdth" 75;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  text-wrap: nowrap;
+}
+
+.first,
+.last {
+  display: block;
+  width: fit-content;
+}
+
+/* The second line hangs two columns in: one column's width plus its gutter, twice. */
+.last {
+  margin-left: calc(2 * (100% + var(--gutter)) / 12);
+}
+
+.foot {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--space-4);
+  align-items: end;
+}
+
+.lines {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 34rem;
+}
+
+.line {
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  line-height: 1.25;
+}
+
+.status {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+@media (max-width: 767px) {
+  .last {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .foot {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  .lines {
+    grid-column: 1 / span 6;
+  }
+
+  .chip {
+    grid-column: 8 / -1;
+    justify-self: end;
+  }
+}
+
+.stage {
+  grid-column: 1 / -1;
+  position: relative;
+}
+
+/* Once the field's first frame is drawn, the text steps back. It is still the <h1>:
+   screen readers, search and copy-paste all use it. */
+.stage[data-field="on"] .name {
+  color: transparent;
+}
+
+.stage[data-field="on"] .name::selection,
+.stage[data-field="on"] .name *::selection {
+  color: var(--paper);
+}

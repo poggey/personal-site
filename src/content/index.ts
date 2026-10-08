@@ -10,6 +10,7 @@ import { profile } from "./profile";
 import { projects } from "./projects";
 import { toolkit } from "./skills";
 import { specialism } from "./specialism";
+import { visuals } from "./visuals";
 
 // The one entry point for content. Each file has already parsed itself against its schema;
 // this adds the checks that span files, so a broken reference fails the build too.
@@ -63,6 +64,7 @@ export const content = {
   toolkit,
   interests,
   microcopy,
+  visuals,
   flags,
 } as const;
 

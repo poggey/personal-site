@@ -1,0 +1,272 @@
+/* The only dark section: full-bleed night paper, so it reads as another room. */
+.interlude {
+  background: var(--paper);
+  color: var(--print);
+  padding-block: var(--section-gap);
+}
+
+.prompt {
+  max-width: 40rem;
+  font-size: var(--step-2);
+  line-height: 1.3;
+}
+
+.target {
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  color: var(--biro);
+  font-weight: 550;
+}
+
+.stage {
+  margin-top: var(--space-6);
+}
+
+/* Reserves the game's height so it can load without shifting the page. */
+.placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 52rem;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.game {
+  display: grid;
+  gap: var(--space-6);
+  min-height: 52rem;
+}
+
+.chartCol {
+  min-width: 0;
+}
+
+.chart {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  touch-action: pan-y;
+}
+
+.chart canvas,
+.chart svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.frontier {
+  fill: none;
+  stroke: var(--print);
+  stroke-width: 1.5;
+}
+
+.axis {
+  stroke: var(--rule);
+}
+
+.tick {
+  fill: var(--pencil);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.axisLabel {
+  fill: var(--pencil);
+  font-family: var(--font-sans);
+  font-size: 12px;
+}
+
+.you {
+  fill: var(--biro);
+  stroke: var(--paper);
+  stroke-width: 2;
+}
+
+.optimum {
+  fill: none;
+  stroke: var(--print);
+  stroke-width: 1.5;
+}
+
+.markLabel {
+  fill: var(--print);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.crosshair line {
+  stroke: var(--pencil);
+  stroke-dasharray: 2 3;
+}
+
+.crosshair text {
+  fill: var(--print);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-right: 0.4em;
+  border-radius: 50%;
+  vertical-align: 0.05em;
+}
+
+.swatchRandom {
+  background: var(--pencil);
+}
+
+.swatchYou {
+  background: var(--biro);
+}
+
+.swatchFrontier {
+  width: 1.2em;
+  height: 2px;
+  border-radius: 0;
+  background: var(--print);
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: var(--space-1) var(--space-6);
+  margin: var(--space-3) 0 0;
+  font-family: var(--font-sans);
+}
+
+.readout dt {
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.readout dd {
+  margin: 0;
+  font-size: var(--step-3);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.sharpeValue[data-hit="true"] {
+  color: var(--biro);
+}
+
+.controls {
+  min-width: 0;
+}
+
+.weightsHeading {
+  font-size: var(--step-0);
+  font-weight: 600;
+}
+
+.sliders {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.sliderName {
+  display: flex;
+  gap: 0.5em;
+  align-items: baseline;
+}
+
+.ticker {
+  color: var(--pencil);
+}
+
+.sliderValue {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: 600;
+  min-width: 3.5ch;
+  text-align: right;
+}
+
+.range {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: var(--target);
+  margin: 0;
+  background: transparent;
+  accent-color: var(--biro);
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.reveal {
+  max-width: 40rem;
+  margin-top: var(--space-4);
+}
+
+.revealText {
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.fix {
+  margin-top: var(--space-2);
+  color: var(--pencil);
+}
+
+.dataNote {
+  margin-top: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+@media (min-width: 1024px) {
+  .game {
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+    column-gap: calc(var(--gutter) * 2);
+    min-height: 40rem;
+  }
+
+  .placeholder {
+    min-height: 40rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .tick,
+  .axisLabel,
+  .markLabel,
+  .crosshair text {
+    font-size: 24px;
+  }
+}

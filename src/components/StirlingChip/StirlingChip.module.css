@@ -1,0 +1,41 @@
+.chip {
+  display: grid;
+  gap: 0.25em;
+  max-width: 26rem;
+  padding: var(--space-1) 0;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  line-height: 1.35;
+  color: var(--print);
+  text-decoration: none;
+}
+
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--pencil);
+}
+
+/* A static biro dot: the live signal. It does not pulse; motion answers the reader only. */
+.signal {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--biro);
+}
+
+.headline {
+  text-decoration: underline;
+  text-decoration-color: var(--biro);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.chip:hover .headline {
+  text-decoration-thickness: 2px;
+}
+
+.label {
+  color: var(--pencil);
+}

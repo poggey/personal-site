@@ -1,0 +1,135 @@
+/* Print first: an A4 sheet at 11pt, close to Padraig's own CV. On screen it sits on paper
+   with a small toolbar; in print only the sheet remains. */
+.page {
+  padding: var(--space-2) var(--margin) var(--space-8);
+}
+
+.tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 210mm;
+  margin: 0 auto var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.tools a,
+.tools button {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+}
+
+.tools button {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  text-decoration-color: var(--biro);
+  text-underline-offset: 0.3em;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 11mm 11mm;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  line-height: 1.22;
+  font-optical-sizing: auto;
+}
+
+.sheet em {
+  font-family: var(--font-newsreader-italic), var(--font-serif);
+  font-style: italic;
+}
+
+.sheet a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 9pt;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 24pt;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.contact {
+  margin-top: 2pt;
+}
+
+.heading {
+  margin: 9pt 0 2pt;
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.entry + .entry {
+  margin-top: 6pt;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12pt;
+}
+
+.bullets {
+  margin: 1pt 0 0;
+  padding-left: 18pt;
+}
+
+.bullets li {
+  /* One line per bullet: the CV rule. Overflow would show, so the PDF check catches it. */
+  white-space: nowrap;
+}
+
+.skill em {
+  margin-right: 8pt;
+}
+
+@media (max-width: 767px) {
+  .sheet {
+    padding: 6mm;
+    font-size: 9pt;
+  }
+
+  .bullets li {
+    white-space: normal;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  .page {
+    padding: 0;
+  }
+
+  .tools {
+    display: none;
+  }
+
+  .sheet {
+    max-width: none;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+  }
+}

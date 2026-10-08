@@ -30,6 +30,11 @@ export const projects = projectSchema.array().parse([
     palette: null,
     featured: true,
     privateOnly: false,
+    // Captured by scripts/capture.ts from the live site. DRAFT alt text.
+    preview: {
+      src: "/images/projects/risk-dashboard-1440-light.jpg",
+      alt: "The Risk Dashboard in Streamlit: tickers and allocation in the sidebar, with annualised return, volatility, Sharpe, drawdown, VaR, CVaR, Sortino and beta for a sample portfolio.",
+    },
   },
   {
     slug: "stirling",
@@ -57,6 +62,11 @@ export const projects = projectSchema.array().parse([
     },
     featured: true,
     privateOnly: false,
+    // Captured by scripts/capture.ts from the live site. DRAFT alt text.
+    preview: {
+      src: "/images/projects/stirling-1440-light.jpg",
+      alt: "Stirling's front page: the Story of the Day on currencies, a green ledger of the four most unusual moves with sparklines, and the wires below.",
+    },
   },
   {
     slug: "the-slate",
@@ -102,6 +112,11 @@ export const projects = projectSchema.array().parse([
     },
     featured: false,
     privateOnly: false,
+    // Captured by scripts/capture.ts from the live site. DRAFT alt text.
+    preview: {
+      src: "/images/projects/escape-velocity-1440-dark.jpg",
+      alt: "Escape Velocity's opening screen: \"The $1.77 Trillion Offering.\" over a sunrise on a planet's edge, with the offer price, amount raised and multiple below.",
+    },
   },
   {
     slug: "portfolio-optimiser",
@@ -145,6 +160,11 @@ export const projects = projectSchema.array().parse([
     },
     featured: false,
     privateOnly: false,
+    // Captured by scripts/capture.ts from the live site. DRAFT alt text.
+    preview: {
+      src: "/images/projects/apex-1440-dark.jpg",
+      alt: "APEX's overview on a dark background: driver skill against car pace, a driver ranking with equalised car, a circuit matrix, career arcs and a head-to-head.",
+    },
   },
   {
     slug: "marginalia",

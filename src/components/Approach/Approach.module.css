@@ -1,0 +1,27 @@
+.list {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+}
+
+.item {
+  min-width: 0;
+}
+
+.principle {
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+
+.example {
+  margin-top: var(--space-1);
+  max-width: 32ch;
+  color: var(--print);
+}
+
+@media (min-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+}

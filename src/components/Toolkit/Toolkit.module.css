@@ -1,0 +1,111 @@
+/* Narrow screens: the list. Wide screens: the matrix. Only one is ever displayed. */
+.scroller {
+  display: none;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.listItem dt {
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.listItem dd {
+  margin: 0;
+  font-size: var(--step--1);
+}
+
+@media (min-width: 1024px) {
+  .scroller {
+    display: block;
+  }
+
+  .list {
+    display: none;
+  }
+}
+
+.matrix {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.colHead {
+  height: 9rem;
+  vertical-align: bottom;
+  padding: 0 0 var(--space-1);
+  font-weight: 500;
+}
+
+.colLink {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  min-width: var(--target);
+  padding-block: var(--space-1);
+  color: var(--print);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.colHead[data-lit="true"] .colLink,
+.colLink:hover {
+  color: var(--biro);
+}
+
+.rowHead {
+  padding: 0.55em var(--space-2) 0.55em 0;
+  text-align: left;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: var(--radius-control);
+}
+
+.matrix tbody tr {
+  border-top: 1px solid var(--rule);
+}
+
+.matrix tbody tr[data-lit="true"] .rowHead {
+  color: var(--biro);
+}
+
+.cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cell[data-col-lit="true"] {
+  background: var(--biro-wash);
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--print);
+  transition: opacity var(--duration-fast) var(--ease-settle);
+}
+
+/* While something is focused, dots that aren't part of it fade to 20%. */
+.matrix[data-focus="true"] .cell .dot {
+  opacity: 0.2;
+}
+
+.matrix[data-focus="true"] .cell[data-lit="true"] .dot {
+  opacity: 1;
+  background: var(--biro);
+}
+
+.tools {
+  margin-top: var(--space-4);
+  max-width: var(--measure);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
