@@ -14,6 +14,7 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "check:copy": "node scripts/check-copy.ts",
+    "check:bundle": "node scripts/check-bundle.ts",
     "cv:pdf": "node scripts/cv-pdf.ts",
     "stirling:fallback": "node scripts/stirling-fallback.ts",
     "capture": "node scripts/capture.ts",

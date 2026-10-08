@@ -1,6 +1,5 @@
 "use client";
 
-import { scaleLinear } from "d3-scale";
 import { useState } from "react";
 import type { OptimiserData } from "@/content/data/optimiser";
 import styles from "./Visuals.module.css";
@@ -20,22 +19,36 @@ const M = { top: 24, right: 12, bottom: 32, left: 12 };
 const pct = (x: number, dp = 1) => `${(x * 100).toFixed(dp)}%`;
 
 /**
+ * A straight-line map from data to pixels. This chart only needs that, so it skips
+ * d3-scale and keeps the first page load lighter.
+ */
+function linear([d0, d1]: [number, number], [r0, r1]: [number, number]) {
+  return (v: number) => r0 + ((v - d0) / (d1 - d0)) * (r1 - r0);
+}
+
+/** Round steps of 1% or 2% across the domain, for the axis labels. */
+function percentTicks([d0, d1]: [number, number]): number[] {
+  const step = d1 - d0 > 0.06 ? 0.02 : 0.01;
+  const ticks: number[] = [];
+  for (let t = Math.ceil(d0 / step) * step; t <= d1 + 1e-9; t += step)
+    ticks.push(Number(t.toFixed(4)));
+  return ticks;
+}
+
+/**
  * The Risk Dashboard's return histogram with its VaR and CVaR lines. Picking a confidence
  * level moves the lines: the dashboard's main idea in one control. Rendered already drawn.
  */
 export function RiskVisual({ histogram, confidenceLabel }: Props) {
   const [level, setLevel] = useState<Level>("95");
   const { bins } = histogram;
-  const x = scaleLinear()
-    .domain([bins[0]?.x0 ?? -0.05, bins.at(-1)?.x1 ?? 0.05])
-    .range([M.left, W - M.right]);
-  const y = scaleLinear()
-    .domain([0, Math.max(...bins.map((b) => b.count))])
-    .range([H - M.bottom, M.top]);
+  const domain: [number, number] = [bins[0]?.x0 ?? -0.05, bins.at(-1)?.x1 ?? 0.05];
+  const x = linear(domain, [M.left, W - M.right]);
+  const y = linear([0, Math.max(...bins.map((b) => b.count))], [H - M.bottom, M.top]);
 
   const varX = x(histogram.var[level] ?? 0);
   const cvarX = x(histogram.cvar[level] ?? 0);
-  const ticks = x.ticks(5);
+  const ticks = percentTicks(domain);
 
   return (
     <div className={styles.risk}>

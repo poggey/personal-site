@@ -26,6 +26,7 @@ jobs:
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm run check:bundle
       - run: npm run e2e
       - run: npx lhci autorun
       - uses: actions/upload-artifact@v4

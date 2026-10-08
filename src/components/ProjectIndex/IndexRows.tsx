@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ImgHTMLAttributes } from "react";
 import styles from "./ProjectIndex.module.css";
 
 export type IndexRow = {
@@ -13,7 +12,8 @@ export type IndexRow = {
   stack: string;
   status: string;
   talkingPoint: string;
-  preview: { src: string; alt: string } | null;
+  /** Props for an <img>, already optimised on the server by getImageProps. */
+  preview: ImgHTMLAttributes<HTMLImageElement> | null;
 };
 
 const LERP = 0.15;
@@ -86,7 +86,8 @@ export function IndexRows({ rows, caption }: { rows: IndexRow[]; caption: string
       </ul>
       {activeRow?.preview ? (
         <div ref={preview} className={styles.preview} aria-hidden="true" key={activeRow.slug}>
-          <Image src={activeRow.preview.src} alt="" width={320} height={200} sizes="320px" />
+          {/* eslint-disable-next-line @next/next/no-img-element -- props come from getImageProps */}
+          <img {...activeRow.preview} alt="" />
         </div>
       ) : null}
     </div>

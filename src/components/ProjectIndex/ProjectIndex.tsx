@@ -1,3 +1,4 @@
+import { getImageProps } from "next/image";
 import { content } from "@/content";
 import { Section } from "../Section/Section";
 import { IndexRows, type IndexRow } from "./IndexRows";
@@ -16,7 +17,11 @@ export function ProjectIndex() {
       stack: p.stack.slice(0, 3).join(", "),
       status: p.status,
       talkingPoint: p.talkingPoint,
-      preview: p.preview ?? null,
+      // Optimised image props worked out here, so the client rows need no image component.
+      preview: p.preview
+        ? getImageProps({ src: p.preview.src, alt: "", width: 320, height: 200, sizes: "320px" })
+            .props
+        : null,
     }));
   return (
     <Section id="index" heading={microcopy.indexHeading} minDepth="3m">
