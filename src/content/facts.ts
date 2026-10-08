@@ -43,12 +43,5 @@ export const factSheet = factSheetSchema.parse({
       footnote: "Counted from the GitHub API at build time.",
       source: "GitHub",
     },
-    {
-      id: "shariah-portfolio",
-      label: "Shariah-compliant portfolio, built at Raymond James",
-      value: "1",
-      footnote: "Sukuk in place of bonds, matched on risk, then on exposure.",
-      source: "Raymond James Monument",
-    },
   ],
 });

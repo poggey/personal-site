@@ -160,13 +160,9 @@ export const approachSchema = z.object({
 export const specialismSchema = z.object({
   heading: z.string().min(1),
   body: z.string().min(1),
-  /** The two measured points only. Nothing is interpolated between them. */
   finding: z
     .object({
       summary: z.string().min(1),
-      points: z
-        .array(z.object({ riskLevel: z.number(), gapBps: z.number().int().nonnegative() }))
-        .length(2),
       cause: z.string().min(1),
     })
     // null when flags.showRaymondJamesFigures is off: the method shows, the numbers don't.

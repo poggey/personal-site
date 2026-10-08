@@ -2,7 +2,8 @@ import { flags } from "./flags";
 import { specialismSchema } from "./schema";
 
 // Islamic finance. Sources: CV (Raymond James), portfolio reference 3.2 and 4.2.
-// Figures cleared for publication 2026-10-08 (DECISIONS.md); kept to one small example.
+// The bps gaps are left out (2026-10-08): what they measure isn't clear from the sources,
+// so the finding is stated without numbers.
 export const specialism = specialismSchema.parse({
   heading: "Islamic finance",
   // DRAFT
@@ -11,10 +12,6 @@ export const specialism = specialismSchema.parse({
     ? {
         // DRAFT
         summary: "Risk-matching holds at lower risk and breaks down at higher risk.",
-        points: [
-          { riskLevel: 4.5, gapBps: 7 },
-          { riskLevel: 7, gapBps: 108 },
-        ],
         // DRAFT
         cause: "No financials, limited alternatives and a heavy reliance on sukuk.",
       }

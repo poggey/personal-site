@@ -20,6 +20,9 @@ function typingInField(target: EventTarget | null): boolean {
 export function PaletteHost({ data }: { data: PaletteData }) {
   const [mode, setMode] = useState<PaletteMode | null>(null);
 
+  // One line for anyone who opens the developer tools.
+  useEffect(() => console.info(data.text.consoleNote), [data.text.consoleNote]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {

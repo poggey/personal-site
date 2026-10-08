@@ -56,6 +56,7 @@ const paletteData: PaletteData = {
     groupProjects: microcopy.paletteProjects,
     groupActions: microcopy.paletteActions,
     noResults: microcopy.paletteNoResults,
+    consoleNote: microcopy.consoleNote,
     shortcuts: [
       { keys: "Ctrl K, /", action: microcopy.shortcutPalette },
       { keys: "?", action: microcopy.shortcutHelp },

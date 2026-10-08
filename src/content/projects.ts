@@ -1,12 +1,10 @@
-import { flags } from "./flags";
 import { projectSchema } from "./schema";
 
 // Project metadata. The panel prose lives in projects/<slug>.mdx under the five fixed headings.
 // Sources: portfolio reference sections 1 to 3 and 7. Palettes are read from each project's
 // own repo (the source field names the file). Questions and results marked DRAFT are my wording.
-const shariahResult = flags.showRaymondJamesFigures
-  ? "Risk-matching held at Risk 4.5 (7 bps apart) and broke down at Risk 7 (108 bps apart)."
-  : "Risk-matching held at lower risk levels and broke down at higher ones.";
+// No bps figures: what the gap measures isn't clear from the sources (Padraig, 2026-10-08).
+const shariahResult = "Risk-matching held at lower risk levels and broke down at higher ones.";
 
 export const projects = projectSchema.array().parse([
   {
@@ -74,6 +72,7 @@ export const projects = projectSchema.array().parse([
     type: "Data analysis and scroll essay",
     year: 2026,
     status: "Analysis and site built",
+    // Live link waits until the-slate-puds.vercel.app is public (it shows a Vercel login).
     links: [{ label: "Code", href: "https://github.com/poggey/the-slate" }],
     stack: ["Python", "pandas", "statsmodels", "GSAP", "Lenis"],
     question: "Is A24 a film studio or a venture fund?",
@@ -172,7 +171,10 @@ export const projects = projectSchema.array().parse([
     type: "Recommender system",
     year: 2026,
     status: "Built",
-    links: [{ label: "Code", href: "https://github.com/poggey/marginalia-app" }],
+    links: [
+      { label: "Live", href: "https://marginalia-app-three.vercel.app" },
+      { label: "Code", href: "https://github.com/poggey/marginalia-app" },
+    ],
     stack: ["Next.js", "TypeScript", "IndexedDB"],
     // DRAFT
     question: "Can explicit maths pick the next book you'll like?",
@@ -188,6 +190,11 @@ export const projects = projectSchema.array().parse([
     },
     featured: false,
     privateOnly: false,
+    // Captured by scripts/capture.ts from the live site. DRAFT alt text.
+    preview: {
+      src: "/images/projects/marginalia-1440-light.jpg",
+      alt: 'Marginalia\'s welcome screen: the line "A librarian who never guesses." above a short note on how it learns from your ratings, and a Begin button.',
+    },
   },
   {
     slug: "shariah-research",

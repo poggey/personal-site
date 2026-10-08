@@ -57,6 +57,8 @@ const text = {
   paletteProjects: "Project", // DRAFT
   paletteActions: "Action", // DRAFT
   paletteNoResults: "Nothing matches.", // DRAFT
+  consoleNote:
+    "Reading the source? It is all on GitHub: github.com/poggey/personal-site. Press ? for shortcuts.", // DRAFT
   shortcutPalette: "Open this menu", // DRAFT
   shortcutHelp: "Show these shortcuts", // DRAFT
   shortcutClose: "Close a panel or menu", // DRAFT
@@ -66,9 +68,6 @@ const text = {
   cvProjects: "Projects",
   cvExtracurricular: "Extracurricular activities",
   cvSkills: "Skills",
-  specialismSource:
-    "Source: my model portfolios, tested in BlackRock Portfolio 360. Only the two measured points are drawn.", // DRAFT
-  specialismAxis: "Gap to the conventional model, basis points", // DRAFT
   interludeTarget: "Get within {tolerance} of the optimiser's {sharpe}.", // DRAFT
   interludeReset: "Reset",
   interludeShowOptimum: "Show me the optimum",

@@ -29,6 +29,7 @@ export type PaletteData = {
     groupProjects: string;
     groupActions: string;
     noResults: string;
+    consoleNote: string;
     shortcuts: { keys: string; action: string }[];
   };
 };
