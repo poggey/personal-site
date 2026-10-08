@@ -54,12 +54,19 @@ test("no CSS animations are left running after scrolling", async ({ page }) => {
     await page.mouse.wheel(0, 600);
     await page.waitForTimeout(30);
   }
-  await page.waitForTimeout(500);
+  // Longer than the slowest transition (800ms), so anything still running is a loop.
+  await page.waitForTimeout(1500);
   // CSS and Web Animations still running after scrolling: there should be none.
-  const running = await page.evaluate(
-    () => document.getAnimations().filter((a) => a.playState === "running").length,
+  const running = await page.evaluate(() =>
+    document
+      .getAnimations()
+      .filter((a) => a.playState === "running")
+      .map((a) => {
+        const target = (a.effect as KeyframeEffect | null)?.target as Element | null;
+        return `${a.constructor.name} on ${target?.tagName}.${target?.className}`;
+      }),
   );
-  expect(running).toBe(0);
+  expect(running).toEqual([]);
 });
 
 test("the 404 is designed and leads back", async ({ page }) => {
