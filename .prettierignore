@@ -1,0 +1,18 @@
+docs/private/
+design/higgsfield/
+design/photos/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+package-lock.json
+next-env.d.ts
+# Handwritten docs: Prettier must not reformat them
+CLAUDE.md
+START-HERE.md
+AGENTS.md
+prompts/
+docs/PROGRESS.md
+design/README.md

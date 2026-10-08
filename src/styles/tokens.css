@@ -1,0 +1,4 @@
+/* Design tokens. Colour, type scale, spacing and motion are set in phase 02 (Design direction v2). */
+:root {
+  color-scheme: light dark;
+}
