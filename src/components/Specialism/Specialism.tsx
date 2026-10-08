@@ -40,10 +40,18 @@ export function Specialism() {
   const { nodes, unused } = annotate(specialism.body);
   const finding = specialism.finding;
   return (
-    <Section id="specialism" heading={specialism.heading} minDepth="3m">
+    <Section id="specialism" heading={specialism.heading} minDepth="3m" ink="green">
       <div className={`${styles.layout} has-margin-notes`}>
         <div className={styles.text}>
-          {finding ? <p className={styles.summary}>{finding.summary}</p> : null}
+          {finding ? (
+            <p className={styles.summary} data-motion="words">
+              {finding.summary.split(" ").map((word, i) => (
+                <span key={i} data-word>
+                  {word}{" "}
+                </span>
+              ))}
+            </p>
+          ) : null}
           <p>{nodes}</p>
           {finding ? <p className={styles.cause}>{finding.cause}</p> : null}
           {specialism.extras.map((e) => (

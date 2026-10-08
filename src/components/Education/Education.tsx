@@ -23,14 +23,18 @@ export function Education() {
             </p>
 
             {e.modules.length > 0 ? (
-              <table className={styles.marks} data-min-depth="3m">
+              <table className={styles.marks} data-min-depth="3m" data-motion-group>
                 <caption className="visually-hidden">Top module marks, out of 100</caption>
                 <tbody>
                   {e.modules.map((m) => (
                     <tr key={m.name}>
                       <th scope="row">{m.name}</th>
                       <td className={styles.barCell} aria-hidden="true">
-                        <span className={styles.bar} style={{ width: `${m.mark ?? 0}%` }} />
+                        <span
+                          className={styles.bar}
+                          style={{ width: `${m.mark ?? 0}%` }}
+                          data-motion="draw-x"
+                        />
                       </td>
                       <td className={styles.mark}>{m.mark}</td>
                     </tr>

@@ -8,6 +8,7 @@ import { FactSheet } from "@/components/FactSheet/FactSheet";
 import { Hero } from "@/components/Hero/Hero";
 import { Intro } from "@/components/Hero/Intro";
 import { Interlude } from "@/components/Interlude/Interlude";
+import { MotionDirector } from "@/components/Motion/MotionDirector";
 import { OffTheClock } from "@/components/OffTheClock/OffTheClock";
 import { Positions } from "@/components/Positions/Positions";
 import { ProgressRail } from "@/components/ProgressRail/ProgressRail";
@@ -94,6 +95,7 @@ export default function Home() {
       <PaletteHost data={paletteData} />
       <Toaster />
       <SmoothScroll />
+      <MotionDirector />
     </>
   );
 }

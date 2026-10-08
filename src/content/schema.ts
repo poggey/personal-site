@@ -105,6 +105,8 @@ export const toolkitSchema = z.object({
 
 export const interestSchema = z.object({
   id: slugSchema,
+  /** A word or two set large on the card. */
+  title: z.string().min(1),
   text: z.string().min(1),
   /** Optional link to a project slug, such as APEX from Formula 1. */
   project: slugSchema.optional(),

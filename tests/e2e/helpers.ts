@@ -18,3 +18,13 @@ export async function expectNoSeriousA11yIssues(page: Page): Promise<void> {
     serious.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`),
   ).toEqual([]);
 }
+
+/**
+ * Waits until MotionDirector has pinned the gallery and measured the page, so clicks land
+ * where they will stay. Under reduced motion it never runs, so the wait simply times out.
+ */
+export async function waitForMotion(page: Page): Promise<void> {
+  await page
+    .waitForSelector("html[data-motion='ready']", { state: "attached", timeout: 5000 })
+    .catch(() => {});
+}

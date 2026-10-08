@@ -1,18 +1,48 @@
 .row {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: min(72vw, 18rem);
+  grid-auto-columns: min(78vw, 20rem);
   gap: var(--gutter);
-  margin: 0;
+  margin: 0 calc(-1 * var(--margin));
+  padding: 0 var(--margin) var(--space-2);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding-bottom: var(--space-2);
+  scrollbar-width: none;
+  cursor: grab;
 }
 
-.item {
+.row::-webkit-scrollbar {
+  display: none;
+}
+
+.row[data-dragging="true"] {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+/* A printed card: the ink is the card. The big word sits at the foot, cropped by the edge. */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3 / 4;
+  padding: var(--space-3);
+  overflow: hidden;
   scroll-snap-align: start;
+  background: var(--paper);
+  color: var(--print);
+  transition: transform var(--duration-base) var(--ease-settle);
+}
+
+.card:hover {
+  transform: rotate(-1.5deg) translateY(-6px);
+}
+
+.text {
   font-size: var(--step-1);
-  line-height: 1.4;
+  line-height: 1.35;
+  max-width: 22ch;
 }
 
 .link {
@@ -21,12 +51,19 @@
   min-height: var(--target);
   font-family: var(--font-sans);
   font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--print);
 }
 
-@media (min-width: 1024px) {
-  .row {
-    grid-auto-flow: row;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-    overflow: visible;
-  }
+.title {
+  position: absolute;
+  left: calc(var(--space-3) - 0.06em);
+  bottom: -0.16em;
+  font-family: var(--font-sans);
+  font-size: clamp(4.5rem, 9vw, 7rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 66;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
 }

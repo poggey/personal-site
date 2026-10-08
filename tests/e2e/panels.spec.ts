@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { expectNoSeriousA11yIssues, skipIntro } from "./helpers";
+import { expectNoSeriousA11yIssues, skipIntro, waitForMotion } from "./helpers";
 
 test.beforeEach(async ({ page }) => skipIntro(page));
 
@@ -8,6 +8,7 @@ const open = (page: import("@playwright/test").Page) =>
 
 test("a case study opens as a panel over the page, and Esc closes it", async ({ page }) => {
   await page.goto("/");
+  await waitForMotion(page);
   await open(page);
   const panel = page.getByRole("dialog", { name: "Stirling" });
   await expect(panel).toBeVisible();
@@ -24,6 +25,7 @@ test("a case study opens as a panel over the page, and Esc closes it", async ({ 
 
 test("the close button and the back button both close the panel", async ({ page }) => {
   await page.goto("/");
+  await waitForMotion(page);
   await open(page);
   await page.getByRole("button", { name: "Close" }).click();
   await expect(page.getByRole("dialog")).toBeHidden();
@@ -37,6 +39,7 @@ test("the close button and the back button both close the panel", async ({ page 
 
 test("focus returns to the link that opened the panel", async ({ page }) => {
   await page.goto("/");
+  await waitForMotion(page);
   const link = page.getByRole("link", { name: /Open the case study.*Stirling/ });
   await link.focus();
   await page.keyboard.press("Enter");

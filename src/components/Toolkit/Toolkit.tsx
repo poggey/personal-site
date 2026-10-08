@@ -15,7 +15,7 @@ export function Toolkit() {
     .filter((p) => used.has(p.slug))
     .map((p) => ({ slug: p.slug, title: p.title }));
   return (
-    <Section id="toolkit" heading={microcopy.toolkitHeading} minDepth="3m">
+    <Section id="toolkit" heading={microcopy.toolkitHeading} minDepth="3m" ink="yellow">
       <Matrix
         skills={toolkit.skills.map((s) => ({ id: s.id, label: s.label, projects: s.projects }))}
         columns={columns}

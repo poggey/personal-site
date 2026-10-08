@@ -32,7 +32,7 @@ export function PositionRows({ rows, ticks, labels }: Props) {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div className={styles.chart} data-has-open={open !== null}>
+    <div className={styles.chart} data-has-open={open !== null} data-motion-group>
       <div className={styles.axis} aria-hidden="true">
         {ticks.map((t) => (
           <span key={t.label} className={styles.tick} style={{ left: `${t.at}%` }}>
@@ -65,11 +65,16 @@ export function PositionRows({ rows, ticks, labels }: Props) {
                 <span className={styles.dates}>{r.dates}</span>
                 <span className={styles.track} aria-hidden="true">
                   {r.point ? (
-                    <span className={styles.point} style={{ left: `${r.left + r.width / 2}%` }} />
+                    <span
+                      className={styles.point}
+                      style={{ left: `${r.left + r.width / 2}%` }}
+                      data-motion="draw-x"
+                    />
                   ) : (
                     <span
                       className={`${styles.bar} ${r.current ? styles.current : ""}`}
                       style={{ left: `${r.left}%`, width: `${r.width}%` }}
+                      data-motion="draw-x"
                     />
                   )}
                 </span>

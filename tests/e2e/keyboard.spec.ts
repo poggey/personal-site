@@ -1,11 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { skipIntro } from "./helpers";
+import { skipIntro, waitForMotion } from "./helpers";
 
 test.beforeEach(async ({ page }) => skipIntro(page));
 
 test("keyboard only: skip link, dial, panel, palette, sliders", async ({ page }, info) => {
   test.skip(info.project.name !== "desktop-1440", "one keyboard walk, at desktop width");
   await page.goto("/");
+  await waitForMotion(page);
 
   // The skip link is the first stop and moves focus to the content.
   await page.keyboard.press("Tab");
@@ -66,6 +67,7 @@ test("keyboard only: skip link, dial, panel, palette, sliders", async ({ page },
 
 test("Show me the optimum reveals the answer", async ({ page }) => {
   await page.goto("/");
+  await waitForMotion(page);
   await page.locator("#interlude").scrollIntoViewIfNeeded();
   await page.getByRole("button", { name: "Show me the optimum" }).click();
   await expect(page.getByText("The optimiser's answer: 56% gold")).toBeVisible();

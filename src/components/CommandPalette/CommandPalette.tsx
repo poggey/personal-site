@@ -65,10 +65,16 @@ export default function CommandPalette({
     const el = dialog.current;
     if (!el) return;
     el.showModal();
-    const onCancel = () => onClose();
-    el.addEventListener("close", onCancel);
+    // Esc fires "cancel" synchronously; the later "close" event would race a quick
+    // follow-up shortcut, so the palette closes itself straight away instead.
+    const onCancel = (e: Event) => {
+      e.preventDefault();
+      el.close();
+      onClose();
+    };
+    el.addEventListener("cancel", onCancel);
     return () => {
-      el.removeEventListener("close", onCancel);
+      el.removeEventListener("cancel", onCancel);
       if (el.open) el.close();
     };
   }, [onClose]);
@@ -105,6 +111,7 @@ export default function CommandPalette({
 
   function run(command: Command) {
     dialog.current?.close();
+    onClose();
     switch (command.kind) {
       case "section": {
         const section = document.getElementById(command.target);
@@ -178,7 +185,10 @@ export default function CommandPalette({
       aria-label={mode === "shortcuts" ? text.shortcutsHeading : text.heading}
       onClick={(e) => {
         // A click on the backdrop (the dialog element itself, outside its content) closes it.
-        if (e.target === dialog.current) dialog.current?.close();
+        if (e.target === dialog.current) {
+          dialog.current?.close();
+          onClose();
+        }
       }}
     >
       <div className={styles.panel}>

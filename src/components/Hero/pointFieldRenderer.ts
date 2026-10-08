@@ -6,9 +6,13 @@ import { createField, sampleTargets, step, STEP, type Field, type Forces } from 
 
 const vertex = /* glsl */ `
   attribute vec2 position;
+  attribute vec2 target;
   uniform vec2 uResolution;
   uniform float uSize;
+  varying float vNoise;
   void main() {
+    // 0 on its letter, 1 when 40px or more away: how much this point is still noise.
+    vNoise = clamp(distance(position, target) / 40.0, 0.0, 1.0);
     // CSS pixels (origin top left) to clip space (origin centre, y up).
     vec2 clip = (position / uResolution) * 2.0 - 1.0;
     gl_Position = vec4(clip.x, -clip.y, 0.0, 1.0);
@@ -19,11 +23,14 @@ const vertex = /* glsl */ `
 const fragment = /* glsl */ `
   precision mediump float;
   uniform vec3 uColor;
+  uniform vec3 uNoiseColor;
   uniform float uAlpha;
+  varying float vNoise;
   void main() {
     // Round points: discard the corners of each square sprite.
     if (length(gl_PointCoord - 0.5) > 0.5) discard;
-    gl_FragColor = vec4(uColor, uAlpha);
+    // Noise is printed in pink ink; a point turns to print as it lands on its letter.
+    gl_FragColor = vec4(mix(uColor, uNoiseColor, vNoise), uAlpha);
   }
 `;
 
@@ -105,6 +112,7 @@ export function startPointField(opts: PointFieldOptions): PointFieldHandle {
   const pointSize = (spacing: number) => Math.max(1.5, spacing * 0.85) * dpr;
   const geometry = new Geometry(gl, {
     position: { size: 2, data: field.position },
+    target: { size: 2, data: field.target },
   });
   const program = new Program(gl, {
     vertex,
@@ -115,6 +123,8 @@ export function startPointField(opts: PointFieldOptions): PointFieldHandle {
       uResolution: { value: [box.width, box.height] },
       uSize: { value: pointSize(sample.spacing) },
       uColor: { value: parseColor(getComputedStyle(opts.colorSource).color) },
+      // The riso pink from tokens.css (--ink-pink).
+      uNoiseColor: { value: parseColor("rgb(255, 72, 176)") },
       uAlpha: { value: 1 },
     },
   });
@@ -201,13 +211,18 @@ export function startPointField(opts: PointFieldOptions): PointFieldHandle {
       program.uniforms.uResolution!.value = [b.width, b.height];
       const { points: target, spacing } = sampleName(stage, opts.lines, dpr);
       program.uniforms.uSize!.value = pointSize(spacing);
-      if (target.length === field.target.length) field.target.set(target);
-      else {
+      if (target.length === field.target.length) {
+        field.target.set(target);
+        geometry.attributes.target!.needsUpdate = true;
+      } else {
         field = createField(target, b.width, b.height);
         field.position.set(target);
         geometry.attributes.position!.data = field.position;
         geometry.attributes.position!.count = field.count;
         geometry.updateAttribute(geometry.attributes.position!);
+        geometry.attributes.target!.data = field.target;
+        geometry.attributes.target!.count = field.count;
+        geometry.updateAttribute(geometry.attributes.target!);
         geometry.setDrawRange(0, field.count);
       }
     }, 150);

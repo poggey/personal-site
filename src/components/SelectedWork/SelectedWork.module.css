@@ -1,42 +1,97 @@
-.rows {
-  display: grid;
-  gap: var(--space-12);
+/* Default (no motion, or before it starts): slides stack, each a full-bleed band. */
+.gallery {
+  position: relative;
+  overflow: hidden;
 }
 
-.row {
+.track {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro,
+.slide {
+  padding: var(--space-12) var(--margin);
+}
+
+.intro {
   display: grid;
+  align-content: end;
   gap: var(--space-4);
-  align-items: start;
+  background: var(--paper);
+  color: var(--print);
+}
+
+.heading {
+  position: relative;
+  font-size: clamp(3.5rem, 11vw, 11rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 70;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  isolation: isolate;
+}
+
+.heading::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: var(--ink-pink);
+  transform: translate(var(--reg, 4px), calc(var(--reg, 4px) * 0.6));
+  mix-blend-mode: var(--overprint);
+}
+
+.contents {
+  margin: 0;
+  padding-left: 1.4em;
+  font-family: var(--font-sans);
+  font-size: var(--step-1);
+}
+
+.slide {
+  display: grid;
+  gap: var(--space-6);
+  align-content: center;
+  background: var(--paper);
+  color: var(--print);
+}
+
+.count,
+.type,
+.stack {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
 }
 
 .title {
-  font-size: var(--step-4);
-  font-weight: 650;
-  letter-spacing: -0.015em;
+  margin-top: var(--space-2);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 78;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
 }
 
 .type {
   margin-top: var(--space-1);
-  font-family: var(--font-sans);
-  font-size: var(--step--1);
-  color: var(--pencil);
 }
 
 .question {
   margin-top: var(--space-3);
-  font-size: var(--step-1);
-  line-height: 1.4;
+  max-width: 30ch;
+  font-size: var(--step-2);
+  line-height: 1.25;
 }
 
 .result {
   margin-top: var(--space-2);
+  max-width: 44ch;
 }
 
 .stack {
   margin-top: var(--space-2);
-  font-family: var(--font-sans);
-  font-size: var(--step--1);
-  color: var(--pencil);
 }
 
 .links {
@@ -56,9 +111,8 @@
 
 .primary {
   color: var(--print);
-  font-weight: 600;
+  font-weight: 650;
   text-decoration: underline;
-  text-decoration-color: var(--biro);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.3em;
 }
@@ -67,18 +121,80 @@
   color: var(--biro);
 }
 
-.visual {
+.media {
+  position: relative;
   min-width: 0;
 }
 
-/* Visual on 5 of the body's 9 columns, text on 4; alternating sides. */
-@media (min-width: 1024px) {
-  .row {
-    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
-    column-gap: calc(var(--gutter) * 2);
+/* The mini visual sits on its own paper so charts keep their contrast over a screenshot. */
+.inset {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  background: var(--paper);
+  max-width: 34rem;
+}
+
+.feature {
+  max-width: 44rem;
+}
+
+/* Phones and tablets: a native swipe row. */
+@media (max-width: 1023px) {
+  .track {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
   }
 
-  .flip .text {
-    order: 2;
+  .intro,
+  .slide {
+    flex: 0 0 88vw;
+    scroll-snap-align: start;
+    padding: var(--space-8) var(--space-3);
   }
+
+  .intro {
+    flex-basis: 70vw;
+  }
+}
+
+/* Wide screens without motion: text beside media. */
+@media (min-width: 1024px) {
+  .slide {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    column-gap: calc(var(--gutter) * 2);
+    min-height: 100vh;
+  }
+
+  .intro {
+    min-height: 70vh;
+  }
+
+  .inset {
+    position: absolute;
+    right: calc(-1 * var(--space-2));
+    bottom: calc(-1 * var(--space-6));
+    width: min(26rem, 60%);
+    margin: 0;
+    box-shadow: 0 18px 48px rgb(0 0 0 / 0.18);
+  }
+}
+
+/* Wide screens with motion: one row of full-screen slides, moved sideways by GSAP. */
+.gallery[data-gallery-on="true"] .track {
+  flex-direction: row;
+  width: max-content;
+  height: 100vh;
+}
+
+.gallery[data-gallery-on="true"] .intro,
+.gallery[data-gallery-on="true"] .slide {
+  flex: 0 0 100vw;
+  height: 100vh;
+  min-height: 0;
+}
+
+.gallery[data-gallery-on="true"] .intro {
+  flex-basis: 60vw;
 }

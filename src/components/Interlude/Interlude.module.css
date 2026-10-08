@@ -196,6 +196,7 @@
 
 .sliderName {
   display: flex;
+  align-items: center;
   gap: 0.5em;
   align-items: baseline;
 }
@@ -217,8 +218,16 @@
   height: var(--target);
   margin: 0;
   background: transparent;
-  accent-color: var(--biro);
+  accent-color: var(--asset, var(--biro));
   cursor: pointer;
+}
+
+.sliderName::before {
+  content: "";
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  background: var(--asset);
 }
 
 .buttons {

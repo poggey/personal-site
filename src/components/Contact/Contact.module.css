@@ -93,3 +93,7 @@
     grid-column: 4 / -1;
   }
 }
+
+.signal {
+  margin-block: calc(-1 * var(--space-2));
+}

@@ -35,6 +35,18 @@ const frontierPath =
     .x((p) => x(p.volatility))
     .y((p) => y(p.return))(frontier) ?? "";
 
+// One ink per asset, so each slider and its swatch read as a set (all legible on black).
+const ASSET_INKS = [
+  "#ff48b0",
+  "#ffe800",
+  "#00a95c",
+  "#4fb3ff",
+  "#ff6c2f",
+  "#82d8d5",
+  "#ffb3d7",
+  "#e6e7e4",
+];
+
 const pct = (v: number, dp = 1) => `${(v * 100).toFixed(dp)}%`;
 const REVEAL_MS = 800;
 
@@ -279,7 +291,11 @@ export default function BeatMySharpe({ copy }: { copy: InterludeCopy }) {
             const percent = Math.round((weights[i] ?? 0) * 100);
             const id = `weight-${t.ticker.replace(".", "-")}`;
             return (
-              <li key={t.ticker} className={styles.slider}>
+              <li
+                key={t.ticker}
+                className={styles.slider}
+                style={{ "--asset": ASSET_INKS[i % ASSET_INKS.length] } as React.CSSProperties}
+              >
                 <label htmlFor={id} className={styles.sliderName}>
                   <span>{name}</span>
                   <span className={styles.ticker}>{t.ticker}</span>

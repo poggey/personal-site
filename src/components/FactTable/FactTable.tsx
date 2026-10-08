@@ -35,7 +35,11 @@ export function FactTable({ caption, rows, footer }: Props) {
                 {row.label}
                 {row.note ? <span className={styles.marker}>{row.note}</span> : null}
               </th>
-              <td className={styles.value}>{row.value}</td>
+              <td className={styles.value}>
+                <span data-motion="stretch" className={styles.figure}>
+                  {row.value}
+                </span>
+              </td>
               {row.footnote ? <td className={styles.footnote}>{row.footnote}</td> : null}
             </tr>
           ))}

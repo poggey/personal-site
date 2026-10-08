@@ -54,6 +54,16 @@ Routes: `/work/[slug]` case-study panels (open over the page via an intercepting
 
 **Depth dial:** 30 sec / 3 min (default) / 10 min. Every section declares what it shows at each depth. State persists for the visit (sessionStorage) and accepts `?depth=30s|3m|10m`.
 
+## Design direction v3 (2026-10-08, supersedes v2 on colour, sections and motion)
+
+Padraig asked for the page to be a showcase of design: more colour, real images, distinct sections and movement, while staying clean. v2's type, grid, copy rules and "no generic AI traits" still hold. What changes:
+
+- **Riso print.** The page is printed in spot-colour inks: blue `#0078BF` (white text), fluorescent pink `#FF48B0`, green `#00A95C` and yellow `#FFE800` (black text); all AA. Inked sections are full-bleed (fact sheet blue, Positions pink, Islamic finance green, Toolkit yellow); the interlude stays black; the rest stay on paper. Section headings carry a second ink slightly out of register.
+- **Images.** Real screenshots only, shown as a halftone in the slide's ink that resolves into the image as it scrolls in. No stock or generated imagery on the page.
+- **Selected work is a gallery.** A pinned, sideways-scrolling row of full-screen slides on desktop, each in its project's palette; a native swipe row on phones; a plain stack without motion.
+- **Motion: one signature move per section**, tied to its content and scrubbed to scroll (`src/components/Motion/MotionDirector.tsx`): heading register, figures widening on the width axis, bars drawing, matrix dots gathering, a statement darkening word by word, halftone resolving, the gallery, the contact dot. Still banned: fade-and-slide on everything, count-ups, text scrambles, custom cursors. The resting CSS is always the finished state, so no-JS and reduced motion show everything static.
+- **Budgets unchanged**, except Lighthouse performance score and LCP are warnings (the intro stays, Padraig's call); first-load JS is checked by `npm run check:bundle`.
+
 ## Design direction v2 (supersedes the white paper on colour, type, labels and motion)
 
 **Why it changed.** The white paper's tokens (warm cream background, vermilion accent, monospace uppercase labels, middle-dot meta strings, hairline broadsheet rules, one italic word per headline, count-ups, text scrambles on every label) are among the most common traits of AI-generated pages. Padraig has rejected directions before for looking AI-generated. The concept, structure and interactions are unchanged.

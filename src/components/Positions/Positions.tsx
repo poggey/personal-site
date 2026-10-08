@@ -50,7 +50,7 @@ export function Positions() {
   const ticks = x.ticks(5).map((t) => ({ label: String(t.getUTCFullYear()), at: x(t) }));
 
   return (
-    <Section id="positions" heading={microcopy.positionsHeading}>
+    <Section id="positions" heading={microcopy.positionsHeading} ink="pink">
       <PositionRows
         rows={rows}
         ticks={ticks}

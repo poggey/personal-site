@@ -89,8 +89,9 @@
 
 .bar {
   position: absolute;
-  top: 3px;
-  height: 6px;
+  top: 2px;
+  height: 8px;
+  transform-origin: left center;
   min-width: 6px;
   background: var(--print);
 }
@@ -102,6 +103,7 @@
 
 .point {
   position: absolute;
+  transform-origin: center;
   top: 1px;
   width: 10px;
   height: 10px;

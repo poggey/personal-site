@@ -14,6 +14,8 @@ type Props = {
   className?: string;
   /** Heading above a full-width body, for sections that need all 12 columns. */
   wide?: boolean;
+  /** The riso ink this section is printed in: a full-bleed spot colour. */
+  ink?: "blue" | "pink" | "green" | "yellow";
   children: ReactNode;
 };
 
@@ -29,6 +31,7 @@ export function Section({
   aside,
   className,
   wide = false,
+  ink,
   children,
 }: Props) {
   const headingId = `${id}-heading`;
@@ -38,11 +41,13 @@ export function Section({
       aria-labelledby={headingId}
       data-min-depth={minDepth}
       data-rail-label={heading}
-      className={`${styles.section} ${wide ? styles.wide : ""} ${className ?? ""}`}
+      data-motion="register"
+      className={`${styles.section} ${wide ? styles.wide : ""} ${ink ? `ink-${ink} ${styles.inked}` : ""} ${className ?? ""}`}
     >
       <Container grid>
         <header className={styles.label}>
-          <h2 id={headingId} className={styles.heading}>
+          {/* data-text feeds the misregistered second ink layer drawn in CSS. */}
+          <h2 id={headingId} className={styles.heading} data-text={heading}>
             {heading}
           </h2>
           {aside ? <div className={styles.aside}>{aside}</div> : null}

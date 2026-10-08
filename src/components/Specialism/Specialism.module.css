@@ -11,9 +11,12 @@
 
 .summary {
   font-family: var(--font-sans);
-  font-size: var(--step-2);
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 750;
+  font-variation-settings: "wdth" 80;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  max-width: 18ch;
 }
 
 .cause,

@@ -62,8 +62,9 @@
 
 .bar {
   display: block;
-  height: 6px;
+  height: 8px;
   background: var(--print);
+  transform-origin: left center;
 }
 
 .mark {

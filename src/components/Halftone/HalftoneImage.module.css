@@ -1,0 +1,36 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  --resolve: 1;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: clamp(0, calc(var(--resolve) * 2 - 0.6), 1);
+}
+
+/* The dots sit on top and give way as the image resolves. Hidden until drawn. */
+.dots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dots[data-ready="true"] {
+  opacity: clamp(0, calc(1.4 - var(--resolve) * 1.6), 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dots {
+    display: none;
+  }
+
+  .image {
+    opacity: 1;
+  }
+}

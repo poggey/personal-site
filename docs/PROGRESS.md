@@ -101,3 +101,15 @@ Padraig asked for every remaining phase to be carried through to a finished prod
 - The Slate's URL (the-slate-puds.vercel.app) still redirects to a Vercel login, so it isn't linked or captured.
 - The cover composite needs a small Figma touch-up.
 - CLAUDE.md still lists LCP under 2.0s as a build-failing budget; with the intro kept it is a warning. Update CLAUDE.md if you agree.
+
+## Design direction v3: riso print and gallery (2026-10-08)
+
+Padraig asked for more colour, images and motion, with distinct sections, keeping the clean look. Chosen: riso print plus gallery; one signature move per section; no personal photos.
+
+**Built:** ink tokens and inked sections; misregistered headings; `MotionDirector` (one lazy GSAP setup driven by `data-motion` attributes); `HalftoneImage`; Selected work as a pinned sideways gallery (swipe row on phones, stack without motion); pink-to-black hero points; asset inks in the interlude; Off the clock as a draggable row of ink cards; the contact dot. CLAUDE.md gained "Design direction v3"; DESIGN-PLAN.md has the section table.
+
+**Fixed on the way:** the palette's Esc closing raced a quick "?" (now closes synchronously); tests wait for the motion setup (`html[data-motion=ready]`); the halftone and scroll setup were split and deferred to keep blocking time under 200ms.
+
+**Numbers (local mobile Lighthouse):** performance 0.89 to 0.95, LCP 2.7 to 3.5s (warning), TBT 70 to 130ms, CLS 0, accessibility, best practices and SEO 100. First-load JS 148KB.
+
+**Left over:** video loops still need ffmpeg; The Slate's slide uses its chart until its live site is public; interest card titles are DRAFT.

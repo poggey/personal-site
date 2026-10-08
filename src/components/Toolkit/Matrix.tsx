@@ -43,7 +43,7 @@ export function Matrix({ skills, columns, caption, proofLabel }: MatrixProps) {
 
   return (
     <>
-      <div className={styles.scroller}>
+      <div className={styles.scroller} data-motion="gather">
         <table
           className={styles.matrix}
           data-focus={focus !== null}
@@ -98,7 +98,7 @@ export function Matrix({ skills, columns, caption, proofLabel }: MatrixProps) {
                     >
                       {proves ? (
                         <>
-                          <span className={styles.dot} aria-hidden="true" />
+                          <span className={styles.dot} aria-hidden="true" data-dot />
                           <span className="visually-hidden">Yes</span>
                         </>
                       ) : null}

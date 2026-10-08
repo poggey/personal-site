@@ -1,10 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { expectNoSeriousA11yIssues, skipIntro } from "./helpers";
+import { expectNoSeriousA11yIssues, skipIntro, waitForMotion } from "./helpers";
 
 test.beforeEach(async ({ page }) => skipIntro(page));
 
 test("the name is a real h1 and the page has no serious axe issues", async ({ page }) => {
   await page.goto("/");
+  await waitForMotion(page);
   await expect(page.getByRole("heading", { level: 1, name: "Padraig Middleton" })).toBeVisible();
   await expect(page.locator("h1")).toHaveCount(1);
   // Scroll through so the lazy interlude loads before scanning.
@@ -17,6 +18,7 @@ test("reduced motion: no intro, no canvas, the static name", async ({ browser })
   const context = await browser.newContext({ reducedMotion: "reduce" });
   const page = await context.newPage();
   await page.goto("/");
+  await waitForMotion(page);
   await page.waitForTimeout(1500);
   await expect(page.locator("[data-hero] canvas")).toHaveCount(0);
   await expect(page.locator("html")).not.toHaveClass(/intro/);
@@ -26,6 +28,7 @@ test("reduced motion: no intro, no canvas, the static name", async ({ browser })
 
 test("the depth dial shows and hides content, and remembers the choice", async ({ page }) => {
   await page.goto("/");
+  await waitForMotion(page);
   const approach = page.locator("#approach");
   await expect(approach).toBeVisible();
 
@@ -44,8 +47,9 @@ test("?depth= sets the depth on arrival", async ({ page }) => {
   await expect(page.getByRole("radio", { name: "10 min" })).toBeChecked();
 });
 
-test("nothing animates on scroll except the hero", async ({ page }) => {
+test("no CSS animations are left running after scrolling", async ({ page }) => {
   await page.goto("/");
+  await waitForMotion(page);
   for (let y = 0; y < 12000; y += 600) {
     await page.mouse.wheel(0, 600);
     await page.waitForTimeout(30);

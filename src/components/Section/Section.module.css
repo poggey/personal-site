@@ -7,9 +7,39 @@
 }
 
 .heading {
-  font-size: var(--step-3);
-  font-weight: 650;
-  letter-spacing: -0.01em;
+  position: relative;
+  font-size: var(--step-4);
+  font-weight: 800;
+  font-variation-settings: "wdth" 80;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
+  isolation: isolate;
+}
+
+/* A second ink, printed slightly out of register, as on a riso. --reg is scrubbed down
+   towards 2px as the section arrives (MotionDirector); without motion it rests at 3px. */
+.heading::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: var(--section-ink, var(--ink-pink));
+  transform: translate(var(--reg, 3px), calc(var(--reg, 3px) * 0.6));
+  mix-blend-mode: var(--overprint);
+  pointer-events: none;
+}
+
+/* Full-bleed spot-colour sections. */
+.inked {
+  background: var(--paper);
+  color: var(--print);
+  padding-block: var(--section-gap);
+}
+
+.inked .heading::after {
+  color: var(--print);
+  opacity: 0.18;
+  mix-blend-mode: normal;
 }
 
 .aside {
@@ -62,7 +92,9 @@
     margin-bottom: var(--space-6);
   }
 
+  /* Relative, not static: the heading's second ink layer is positioned against it. */
   .wide .label > * {
-    position: static;
+    position: relative;
+    top: auto;
   }
 }

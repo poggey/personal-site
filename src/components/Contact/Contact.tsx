@@ -3,6 +3,7 @@ import { lastCommit } from "@/lib/build-info";
 import { Container } from "../Container/Container";
 import { BuiltByBadge } from "./BuiltByBadge";
 import { CopyEmail } from "./CopyEmail";
+import { ContactSignal } from "./ContactSignal";
 import { CvLink } from "./CvLink";
 import { LondonTime } from "./LondonTime";
 import styles from "./Contact.module.css";
@@ -23,6 +24,9 @@ export function Contact() {
           <h2 id="contact-heading" className={styles.heading}>
             {microcopy.contactHeading}
           </h2>
+          <div className={styles.signal}>
+            <ContactSignal />
+          </div>
           <CopyEmail
             email={profile.email}
             copyLabel={microcopy.copyEmail}
