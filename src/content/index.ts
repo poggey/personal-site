@@ -2,7 +2,6 @@ import { approach } from "./approach";
 import { education } from "./education";
 import { factSheet } from "./facts";
 import { flags } from "./flags";
-import { interests } from "./interests";
 import { interlude } from "./interlude";
 import { microcopy } from "./microcopy";
 import { positions } from "./positions";
@@ -29,9 +28,6 @@ if (duplicate) throw new Error(`Content error: duplicate project slug "${duplica
 
 for (const skill of toolkit.skills) {
   for (const slug of skill.projects) assertSlug(slug, `skill "${skill.id}"`);
-}
-for (const interest of interests) {
-  if (interest.project) assertSlug(interest.project, `interest "${interest.id}"`);
 }
 for (const principle of approach.principles)
   assertSlug(principle.project, `approach "${principle.id}"`);
@@ -62,7 +58,6 @@ export const content = {
   specialism,
   education,
   toolkit,
-  interests,
   microcopy,
   visuals,
   flags,

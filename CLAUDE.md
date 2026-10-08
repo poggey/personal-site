@@ -48,7 +48,7 @@ docs/               PROGRESS.md, DESIGN-PLAN.md, LAUNCH.md (public); private/ (g
 
 ## The page
 
-Top to bottom: Intro, Hero, Fact sheet, Approach, Selected work (three case studies), Interlude (Beat my Sharpe), Index, Positions, Specialism (Islamic finance), Education, Toolkit, Off the clock, Contact and footer. Section detail: white paper "Section by section".
+Top to bottom: Intro, Hero, Fact sheet, Approach, Selected work (three case studies), Interlude (Beat my Sharpe), Index, Positions, Specialism (Islamic finance), Education, Toolkit, Contact and footer. (Off the clock was removed on 2026-10-08 at Padraig's request.) Section detail: white paper "Section by section".
 
 Routes: `/work/[slug]` case-study panels (open over the page via an intercepting route; standalone page when visited directly), `/cv` print page plus generated PDF, a designed 404.
 
@@ -114,7 +114,7 @@ Never resolve these yourself. The current values live in `src/content/flags.ts` 
 - Greenline HSE: cleared to list, `flags.showGreenline = true`. Keep it low-key: a small entry, never featured.
 - Third featured case study: `flags.featuredThird = "the-slate"` (alternative `"escape-velocity"`).
 - Portrait: none until `public/images/portrait.jpg` exists.
-- APEX: in the Index, plus a link from "Off the clock" (Formula 1). Not featured.
+- APEX: in the Index. Not featured.
 
 ## Imagery and Higgsfield
 

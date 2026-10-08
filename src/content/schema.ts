@@ -103,15 +103,6 @@ export const toolkitSchema = z.object({
   tools: z.array(z.string().min(1)).min(1),
 });
 
-export const interestSchema = z.object({
-  id: slugSchema,
-  /** A word or two set large on the card. */
-  title: z.string().min(1),
-  text: z.string().min(1),
-  /** Optional link to a project slug, such as APEX from Formula 1. */
-  project: slugSchema.optional(),
-});
-
 export const paletteSchema = z.object({
   name: z.string().min(1),
   background: hexSchema,
@@ -206,7 +197,6 @@ export type Position = z.infer<typeof positionSchema>;
 export type Education = z.infer<typeof educationSchema>;
 export type Skill = z.infer<typeof skillSchema>;
 export type Toolkit = z.infer<typeof toolkitSchema>;
-export type Interest = z.infer<typeof interestSchema>;
 export type Project = z.infer<typeof projectSchema>;
 export type Flags = z.infer<typeof flagsSchema>;
 export type Approach = z.infer<typeof approachSchema>;

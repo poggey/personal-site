@@ -9,7 +9,6 @@ import { Hero } from "@/components/Hero/Hero";
 import { Intro } from "@/components/Hero/Intro";
 import { Interlude } from "@/components/Interlude/Interlude";
 import { MotionDirector } from "@/components/Motion/MotionDirector";
-import { OffTheClock } from "@/components/OffTheClock/OffTheClock";
 import { Positions } from "@/components/Positions/Positions";
 import { ProgressRail } from "@/components/ProgressRail/ProgressRail";
 import { ProjectIndex } from "@/components/ProjectIndex/ProjectIndex";
@@ -33,7 +32,6 @@ const sections = [
   { id: "specialism", label: specialism.heading },
   { id: "education", label: microcopy.educationHeading },
   { id: "toolkit", label: microcopy.toolkitHeading },
-  { id: "off-the-clock", label: microcopy.offTheClockHeading },
   { id: "contact", label: microcopy.contactHeading },
 ];
 
@@ -87,7 +85,6 @@ export default function Home() {
         <Specialism />
         <Education />
         <Toolkit />
-        <OffTheClock />
         <Contact />
       </main>
       <SiteFooter />

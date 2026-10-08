@@ -119,3 +119,7 @@ Padraig asked for more colour, images and motion, with distinct sections, keepin
 Padraig's feedback: too bright, less professional, random and overdone; scrolling felt slow; no stretching figures in Key facts.
 
 **Changed:** riso inks replaced by one colour family (paper, mist, deep navy; AA checked); removed misregistered headings, the stretch, word and gather effects, the per-asset colours and the card tilt; hero noise is now biro blue; contact and footer close on navy. Scrolling: removed Lenis (native scrolling), the progress rail no longer re-renders React on scroll, and every scroll-linked change is a transform or opacity. CLAUDE.md v3 and DESIGN-PLAN.md rewritten to match.
+
+## Off the clock removed (2026-10-08)
+
+Padraig asked to remove the interests section. Gone from the page, the palette and the content (`interests.ts` and its schema). The CV keeps its own extracurricular lines (`src/content/cv.ts`), which come from the CV itself.

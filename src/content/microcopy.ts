@@ -10,7 +10,6 @@ const text = {
   positionsHeading: "Positions",
   educationHeading: "Education",
   toolkitHeading: "Toolkit",
-  offTheClockHeading: "Off the clock",
   contactHeading: "Let's talk.",
   openCaseStudy: "Open the case study",
   readMethod: "Read the method",
