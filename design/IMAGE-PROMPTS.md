@@ -2,7 +2,15 @@
 
 Higgsfield prompts, one per entry. **Nothing is generated before Padraig approves the prompt here.** Outputs go to `design/higgsfield/` (gitignored) and move to `public/` only when approved. None of these images appear on the page itself.
 
-Status for every prompt below: **awaiting approval**.
+Status: **all four approved by Padraig on 2026-10-08 and generated** (GPT Image 2, 2k, medium quality, on the free plan's credits). Files are in `design/higgsfield/` as `placeholder-*.png`.
+
+Composites with real screenshots, also in `design/higgsfield/`:
+
+- `cover-awwwards-1600x1200.png`: the resolved hero on the laptop, Beat my Sharpe on the phone. The laptop screenshot overhangs the generated screen's lower-left edge slightly; touch it up in Figma before submitting.
+- `mockup-interlude-1600x1200.png`: Beat my Sharpe after "Show me the optimum", 390 wide.
+- `mockup-panel-1600x1200.png`: the Stirling panel in its own palette.
+
+None of these are used on the page.
 
 ## 1. Awwwards cover (1600 x 1200)
 

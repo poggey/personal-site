@@ -16,8 +16,8 @@ const TARGETS: Target[] = [
   },
   { slug: "stirling", url: "https://stirling-report.vercel.app", waitMs: 3000 },
   { slug: "apex", url: "https://f1-pace-analyser.vercel.app", waitMs: 4000 },
-  // The Slate and Marginalia deployments are behind Vercel's login (deployment protection),
-  // so they are left out until their public URLs are confirmed.
+  // The Slate: the-slate-puds.vercel.app still needs a Vercel login; add it once public.
+  { slug: "marginalia", url: "https://marginalia-app-three.vercel.app", waitMs: 3000 },
   { slug: "escape-velocity", url: "https://escape-velocity-blue.vercel.app", waitMs: 3000 },
 ];
 

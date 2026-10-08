@@ -49,6 +49,7 @@ test("keyboard only: skip link, dial, panel, palette, sliders", async ({ page },
   await page.keyboard.press("Control+k");
   await expect(page.getByRole("combobox")).toBeFocused();
   await page.keyboard.press("Escape");
+  await expect(page.getByRole("combobox")).toBeHidden();
   await page.locator("body").press("?");
   await expect(page.getByRole("dialog", { name: "Keyboard shortcuts" })).toBeVisible();
   await page.keyboard.press("Escape");

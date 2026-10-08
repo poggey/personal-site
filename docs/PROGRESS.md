@@ -82,3 +82,22 @@ Padraig asked for every remaining phase to be carried through to a finished prod
 - Higgsfield prompts await approval; no photos in `design/photos/` yet.
 - All DRAFT copy, including the new interface text in `microcopy.ts`, the visual captions in `visuals.ts` and the README.
 - The console note for developers was not added (one line, waiting on wording).
+
+## Follow-up after review (2026-10-08)
+
+**Padraig's answers:** keep the intro; remove the bps figures; Marginalia is live at marginalia-app-three.vercel.app; keep the badge; remove the "1" fact row; approve the Higgsfield prompts. JS budget and console note left to me.
+
+**Built**
+
+- Specialism states its finding in words; the gap chart, its copy and the bps figures in the Shariah panel and project result are gone. The fact sheet has five rows.
+- Marginalia linked and captured; Risk Dashboard now captured at both widths and themes.
+- `scripts/check-bundle.ts` (`npm run check:bundle`, in CI): the JS the built HTML loads up front, gzipped, against 150KB, skipping Next's legacy `noModule` polyfills. Home is 145.6KB, `/cv` 137.8KB. To get there, the Risk Dashboard visual dropped `d3-scale` for a two-line linear map, and the Index preview's image props are computed on the server with `getImageProps`.
+- Lighthouse CI: the script-size assertion is replaced by the bundle check (Lighthouse counts the deliberately lazy hero and interlude code). Performance score and LCP are warnings, not errors, because the intro stays (Padraig's call). CLS, TBT, page weight and the other three categories still fail the build.
+- A console note pointing to the repo.
+- The four Higgsfield images generated, plus three composites with real screenshots (`design/higgsfield/`, gitignored).
+
+**Left over**
+
+- The Slate's URL (the-slate-puds.vercel.app) still redirects to a Vercel login, so it isn't linked or captured.
+- The cover composite needs a small Figma touch-up.
+- CLAUDE.md still lists LCP under 2.0s as a build-failing budget; with the intro kept it is a warning. Update CLAUDE.md if you agree.
