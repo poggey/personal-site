@@ -37,15 +37,10 @@
   padding: 11mm 11mm;
   background: #fff;
   color: #000;
-  font-family: var(--font-serif);
+  font-family: var(--font-newsreader-cv), var(--font-serif);
   font-size: 11pt;
   line-height: 1.22;
   font-optical-sizing: auto;
-}
-
-.sheet em {
-  font-family: var(--font-newsreader-italic), var(--font-serif);
-  font-style: italic;
 }
 
 .sheet a {
@@ -59,7 +54,7 @@
 }
 
 .name {
-  font-family: var(--font-serif);
+  font-family: inherit;
   font-size: 24pt;
   font-weight: 400;
   line-height: 1.1;
@@ -71,7 +66,7 @@
 
 .heading {
   margin: 9pt 0 2pt;
-  font-family: var(--font-serif);
+  font-family: inherit;
   font-size: 11pt;
   font-weight: 700;
   text-decoration: underline;

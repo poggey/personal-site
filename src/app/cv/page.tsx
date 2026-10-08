@@ -3,7 +3,7 @@ import Link from "next/link";
 import { content } from "@/content";
 import { cv } from "@/content/cv";
 import { formatRange } from "@/lib/dates";
-import { newsreaderItalic } from "./fonts";
+import { newsreaderCv } from "./fonts";
 import { PrintButton } from "./PrintButton";
 import styles from "./cv.module.css";
 
@@ -30,7 +30,7 @@ const roles = [...positions].sort((a, b) => {
  */
 export default function CvPage() {
   return (
-    <main id="main" className={`${styles.page} ${newsreaderItalic.variable}`}>
+    <main id="main" className={`${styles.page} ${newsreaderCv.variable}`}>
       <div className={styles.tools}>
         <Link href="/">{microcopy.backToPage}</Link>
         <PrintButton label={microcopy.printCv} />
