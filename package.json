@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/cv-pdf.ts",
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -13,7 +14,10 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "check:copy": "node scripts/check-copy.ts",
-    "cv:pdf": "node scripts/cv-pdf.ts"
+    "cv:pdf": "node scripts/cv-pdf.ts",
+    "stirling:fallback": "node scripts/stirling-fallback.ts",
+    "capture": "node scripts/capture.ts",
+    "lhci": "lhci autorun"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",
