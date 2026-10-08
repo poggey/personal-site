@@ -1,6 +1,7 @@
-// Open decisions. Defaults from CLAUDE.md; change only when docs/private/DECISIONS.md changes.
+// Open decisions. Change only when docs/private/DECISIONS.md changes.
+// Raymond James figures and Greenline HSE are shown but kept low-key (see CLAUDE.md).
 export const flags = {
-  showRaymondJamesFigures: false,
-  showGreenline: false,
+  showRaymondJamesFigures: true,
+  showGreenline: true,
   featuredThird: "the-slate" as "the-slate" | "escape-velocity",
 } as const;

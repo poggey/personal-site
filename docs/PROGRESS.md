@@ -17,11 +17,11 @@ One entry per phase: what was built, what was decided, what is left.
 
 - TypeScript 5.9.3 and ESLint 9.39.5 rather than the newest majors (TS 7, ESLint 10): `create-next-app` for Next 16.4 pins `typescript ^5` and `eslint ^9`, so these are the versions Next is tested against.
 - `"type": "module"` in `package.json` so Node runs the `.ts` scripts as ES modules without a warning.
+- Padraig cleared the Raymond James figures and fund names, and Greenline HSE, for publication. Both are kept low-key: `flags.showRaymondJamesFigures` and `flags.showGreenline` are now `true`, and CLAUDE.md and DECISIONS.md are updated.
 - The intercepting route for case-study panels is deferred to phase 04, when there is a panel to show. `/work/[slug]` returns one placeholder param because Cache Components requires at least one at build time.
 - Prettier ignores the handwritten docs (`CLAUDE.md`, `START-HERE.md`, `prompts/`, `docs/PROGRESS.md`, `design/README.md`) and the generated `AGENTS.md`.
 
 **Left over**
 
-- GitHub repo not created yet. `CLAUDE.md` quotes the unpublished Raymond James figures and names Greenline HSE; decide before the repo goes public.
 - `npm` reports a pending install script for `unrs-resolver` (used by ESLint's import resolver). Lint works without it.
 - Lighthouse CI config arrives in phase 10; `@lhci/cli` is installed.

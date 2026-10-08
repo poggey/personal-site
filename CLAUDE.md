@@ -100,8 +100,8 @@ Never resolve these yourself. The current values live in `src/content/flags.ts` 
 
 - Parkdean: "around 25 advisors".
 - Zaltek: "led the migration onto it". No automation claim.
-- Raymond James Shariah figures (7 bps, 108 bps) and fund names: hidden, `flags.showRaymondJamesFigures = false`. Show the method only.
-- Greenline HSE: hidden, `flags.showGreenline = false`.
+- Raymond James Shariah figures (7 bps, 108 bps) and fund names: cleared to publish, `flags.showRaymondJamesFigures = true`. Keep it low-key: a small example inside Specialism, never its own section or a headline figure.
+- Greenline HSE: cleared to list, `flags.showGreenline = true`. Keep it low-key: a small entry, never featured.
 - Third featured case study: `flags.featuredThird = "the-slate"` (alternative `"escape-velocity"`).
 - Portrait: none until `public/images/portrait.jpg` exists.
 - APEX: in the Index, plus a link from "Off the clock" (Formula 1). Not featured.
