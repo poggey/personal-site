@@ -1,0 +1,24 @@
+## The question
+
+{/* DRAFT */}
+Can explicit maths pick the next book you'll like, and show its working?
+
+## What I built
+
+{/* DRAFT */}
+A book tracker that recommends the next read. You rate books with half-stars and sliders; each book has a 12-axis tone profile; the app builds a taste vector from your ratings. It runs entirely in the browser, with no server.
+
+## How it works
+
+{/* DRAFT */}
+Predictions use k-nearest neighbours over your own rated books, with a ± band on each one, cosine-similarity evidence for why, and a plain-English reason. A discovery slider runs from comfort shelf to terra incognita. The recommender is unit-tested.
+
+## What it found
+
+{/* DRAFT */}
+The maths worked; the inputs didn't. Only 20 calibration books had hand-authored profiles. Automated classification produced absurd or flat profiles, and every fix made the pool safer but smaller.
+
+## Where it breaks
+
+{/* DRAFT */}
+The real fix is many users correcting profiles, which crowd platforms have and a solo app doesn't. Similarity also captures what a book is about, not how it is paced.

@@ -1,0 +1,24 @@
+## The question
+
+{/* DRAFT */}
+Which mix of eight London-listed ETFs gives the best return for its risk? My first coding project, connecting lecture portfolio theory to real data.
+
+## What I built
+
+{/* DRAFT */}
+A Markowitz mean-variance optimiser over eight ETFs across five asset classes: FTSE 100, global equity, gilts, US Treasuries, index-linked gilts, gold, UK corporate bonds and UK property. Five years of daily prices, from 2020 to 2025.
+
+## How it works
+
+{/* DRAFT */}
+Returns are annualised on 252 trading days, using the sample mean and covariance. 10,000 random portfolios map the space. SciPy's SLSQP finds the optimum, long-only with weights summing to 1 and a 4% risk-free rate, and 100 target-return optimisations trace the frontier.
+
+## What it found
+
+{/* DRAFT */}
+Maximum Sharpe is 0.76: a 12.2% return at 10.7% volatility, from 56% gold and 44% global equity. Equal weights score −0.31. The minimum-variance portfolio spreads across seven of the eight assets, and gold is the strongest diversifier (its highest correlation with anything is 0.39).
+
+## Where it breaks
+
+{/* DRAFT */}
+The maximum-Sharpe portfolio sits in two assets because the optimiser exploits estimation noise in a sample that includes Covid, the 2022 hiking cycle and the gilt crisis. Weight caps or a shrinkage estimator such as Ledoit-Wolf would fix that. There is no out-of-sample test yet.

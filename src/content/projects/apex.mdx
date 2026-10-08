@@ -1,0 +1,27 @@
+## The question
+
+{/* DRAFT */}
+Great driver, or just a great car? Formula 1 lap times mix the two, and I wanted to pull them apart.
+
+## What I built
+
+{/* DRAFT */}
+A model of 12,270 qualifying laps from 2018 to 2024, pulled with FastF1, and a site with five views: a constellation of skill against car, the grid reordered as if everyone drove the same car, a driver-by-circuit matrix, career arcs with 95% bands, and head-to-heads between any two drivers.
+
+## How it works
+
+{/* DRAFT */}
+Each lap is cleaned to a genuine flying lap and expressed as a percentage gap to the session's best, with the 107% rule trimming the tail. The model is lap = circuit + car-season + driver + noise, fitted as ridge-penalised least squares, which shrinks drivers with little data towards the field mean.
+
+{/* DRAFT */}
+Uncertainty comes from a session-level bootstrap of 300 refits, so every number has a confidence interval. All of it ships as one JSON file read in the browser, with no backend.
+
+## What it found
+
+{/* DRAFT */}
+Driver and car can only be separated because teammates and transfers connect the grid into one network. 2021 to 2023 on its own splinters into islands, which is why the window goes back to 2018.
+
+## Where it breaks
+
+{/* DRAFT */}
+Its known weak spots: in-season upgrades, how well a driver suits a particular car, and wet laps.

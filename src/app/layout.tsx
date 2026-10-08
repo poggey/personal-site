@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { profile } from "@/content/profile";
+import { content } from "@/content";
 import "@/styles/tokens.css";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: profile.name,
+  title: content.profile.name,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

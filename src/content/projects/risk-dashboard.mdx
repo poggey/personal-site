@@ -1,0 +1,33 @@
+## The question
+
+{/* DRAFT */}
+Once you've built a portfolio, how do you measure and stress-test its risk? My first project, the Portfolio Optimiser, found a portfolio. This one asks what could go wrong with it.
+
+## What I built
+
+{/* DRAFT */}
+A Streamlit app in three tabs. Pick any tickers or a preset (US Tech, UK Blue Chips, Multi-Asset), set weights by percentage or in pounds, choose a lookback from 6 months to 10 years and a benchmark (SPY, QQQ or ISF.L).
+
+{/* DRAFT */}
+The Risk Dashboard tab reports annualised return and volatility, Sharpe, Sortino, maximum drawdown, 95% VaR, 95% CVaR and beta, with cumulative returns against the benchmark, a drawdown chart, the return distribution with VaR lines, a rolling one-year Sharpe and a correlation heatmap.
+
+## How it works
+
+{/* DRAFT */}
+The Stress Test tab shocks factors, not single assets. Each asset's shock is beta × market shock + rate sensitivity × rate shock + a volatility impact, and the portfolio shock is the weighted sum. Crises come in three shapes, each with its own crash, bottom and recovery timeline: V (COVID 2020), U (2008) and L (Japan in the 1990s).
+
+{/* DRAFT */}
+The Sleep Test tab scores behavioural risk. Five sliders set what you could stand (maximum drawdown, months to recover, worst day, panic days of more than 3% a year, loss aversion). Each dimension scores tolerance ÷ actual × 100, and the scores are averaged.
+
+{/* DRAFT */}
+The weight sliders rebalance each other automatically through Streamlit session state and on_change callbacks. The code splits into data, metrics and visualisation modules.
+
+## What it found
+
+{/* DRAFT */}
+Shocking factors rather than single assets means each holding responds through its own exposure to markets, rates and volatility, instead of to an arbitrary "what if X falls 40%".
+
+## Where it breaks
+
+{/* DRAFT */}
+It uses historical data only. Volatility stands in for duration. Recoveries are linear. Correlations don't spike in a crisis the way they do in real ones. There are no transaction costs.

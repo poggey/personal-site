@@ -1,0 +1,33 @@
+## The question
+
+{/* DRAFT */}
+Can a junior analyst's morning routine run itself, for £0 a month? Ingest the market and macro data, rank what mattered, and issue one numbered edition a day that never changes once published.
+
+## What I built
+
+{/* DRAFT */}
+A daily economic briefing. A Story of the Day, a ledger of the four most unusual moves, wires from the BBC, Bank of England, Fed and ECB, a market board across FX, indices, commodities, crypto and rates, a yield curve observatory tracking 2s10s inversion, an economic diary and a central bank watch with countdowns to each decision.
+
+{/* DRAFT */}
+Every past edition can be replayed from the archive. There is a Learn mode glossary and an Interview Prep mode with a footnoted "talk me through markets" answer and flashcards.
+
+## How it works
+
+{/* DRAFT */}
+At 22:05 a Vercel cron fetches every source, computes z-scores, salience and the day's "weather", makes at most three Gemini Flash calls, and writes the edition as immutable JSON to Vercel Blob. At 22:20 a GitHub Action mirrors it to the repo as an open dataset.
+
+{/* DRAFT */}
+The Story of the Day is picked by a deterministic salience score: the absolute z-score times an asset-class weight. The AI only writes it up, in three tones, under hard rules: snapshot numbers only, hedged causality, and a "What to watch tomorrow" close. If the AI call fails, a template takes over.
+
+{/* DRAFT */}
+Data comes from free APIs: Frankfurter (ECB FX rates), the Yahoo Finance chart API, CoinGecko, the Bank of England, FRED, the ECB Data Portal and official RSS feeds. 46 tests run against fixtures, with no live calls.
+
+## What it found
+
+{/* DRAFT */}
+Code decides what mattered; AI only words it. That split makes every edition auditable: you can see why a story led, and the numbers in the text are the numbers in the snapshot.
+
+## Where it breaks
+
+{/* DRAFT */}
+It depends on free APIs that change without notice; their quirks are logged in the repo. When a source fails, the page says so ("stale since") rather than guessing. Salience is a z-score, so it ranks how unusual a move was, not how much it matters.

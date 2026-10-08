@@ -1,0 +1,30 @@
+## The question
+
+{/* DRAFT */}
+Is A24 a film studio or a venture fund? I treated its filmography as an investment portfolio and tested three hypotheses: returns are skewed, acclaim does not pay, and genre and format explain more than quality.
+
+## What I built
+
+{/* DRAFT */}
+A cost and revenue model for 118 films, with a core sample of 58. Data came from the TMDB and OMDb APIs and was cleaned by hand in Jupyter, flagging problem rows rather than dropping them. P&A spend and rental rates are modelled, in real 2025 dollars, with every assumption recorded in a register (A1 to A7).
+
+{/* DRAFT */}
+The results feed a scroll essay built around one continuous line that runs through every chart. A "Draw the Line" interaction asks readers to guess the relationship between acclaim and profit before showing it.
+
+## How it works
+
+{/* DRAFT */}
+Each hypothesis is falsifiable and tested in statsmodels. A 13-run sensitivity framework varies the modelled assumptions, and the output is frozen into one JSON contract the site reads.
+
+## What it found
+
+{/* DRAFT */}
+Returns are heavily skewed. $1.62bn deployed for a net profit of −$37m. Mean ROI is +191% but the median is −10%, only 43% of films were profitable, and five films made about 65% of all the profit. Skew is 4.62 and the Gini coefficient 0.63.
+
+{/* DRAFT */}
+Acclaim does pay. The Metascore coefficient is +0.047 (robust standard errors 0.018, p = 0.008): ten Metascore points are worth about +60% on the revenue multiple. The Spearman correlation is 0.32. The result held in all 13 sensitivity runs.
+
+## Where it breaks
+
+{/* DRAFT */}
+P&A spend and rental rates are modelled, not reported, so every profit figure carries the assumptions in the register. The core sample is 58 films.
