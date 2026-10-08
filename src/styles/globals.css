@@ -1,4 +1,5 @@
-/* Base styles only. The design system arrives in phase 02. */
+/* Reset, base type and the page-wide rules: focus, selection, depth, reduced motion. */
+
 *,
 *::before,
 *::after {
@@ -7,14 +8,147 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--paper);
+  color: var(--print);
+  scroll-padding-top: var(--space-8);
 }
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--print);
+  font-family: var(--font-serif);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  font-optical-sizing: auto;
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+a {
+  color: var(--biro);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* The focus ring is a biro mark: always visible, never removed. */
+:focus-visible {
+  outline: 2px solid var(--biro);
+  outline-offset: 3px;
+  border-radius: var(--radius-control);
+}
+
+::selection {
+  background: var(--biro);
+  color: var(--paper);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-1) var(--space-2);
+  background: var(--paper);
+  font-family: var(--font-sans);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+/* Depth dial. <html data-depth> is set before first paint by the inline script in the
+   layout. Content marked with the shallowest depth it belongs to hides at shallower ones.
+   display: none (not visibility) so hidden text is also hidden from screen readers. */
+html[data-depth="30s"] [data-min-depth="3m"],
+html[data-depth="30s"] [data-min-depth="10m"],
+html[data-depth="3m"] [data-min-depth="10m"] {
+  display: none !important;
+}
+
+/* Only at 10 min: content that should not show at shallower depths but is not a whole block. */
+html:not([data-depth="10m"]) [data-only-depth="10m"] {
+  display: none !important;
+}
+
+/* Reduced motion: instant state changes everywhere. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -23,5 +157,21 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* Text that carries sidenotes leaves room on its right for them on wide screens.
+   Matches the note width and gap in Sidenote.module.css. */
+@media (min-width: 1280px) {
+  .has-margin-notes {
+    padding-right: calc(min(16rem, 28vw) + var(--space-6));
   }
 }

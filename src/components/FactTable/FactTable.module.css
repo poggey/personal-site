@@ -1,0 +1,75 @@
+.wrap {
+  max-width: 64rem;
+}
+
+.table {
+  width: 100%;
+}
+
+.row {
+  border-bottom: 1px solid var(--rule);
+}
+
+.row:first-child {
+  border-top: 1px solid var(--print);
+}
+
+.row:last-child {
+  border-bottom-color: var(--print);
+}
+
+.label {
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  text-align: left;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--step-0);
+  line-height: 1.4;
+  vertical-align: baseline;
+}
+
+.value {
+  padding-block: var(--space-2);
+  text-align: right;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: var(--step-3);
+  font-weight: 600;
+  font-variation-settings: "wdth" 85;
+  font-variant-numeric: tabular-nums lining-nums;
+  vertical-align: baseline;
+  letter-spacing: -0.01em;
+}
+
+.footer {
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--pencil);
+}
+
+.footnote {
+  display: none;
+  padding: var(--space-2) 0 var(--space-2) var(--space-4);
+  width: 34%;
+  font-size: var(--step--1);
+  line-height: 1.45;
+  color: var(--pencil);
+  vertical-align: baseline;
+}
+
+/* At 30 sec the footnotes go, in both forms. */
+:global(html[data-depth="30s"]) .footnote,
+:global(html[data-depth="30s"]) .marker {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .footnote {
+    display: table-cell;
+  }
+
+  .marker {
+    display: none;
+  }
+}

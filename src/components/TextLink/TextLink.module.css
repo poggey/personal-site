@@ -1,0 +1,16 @@
+.link {
+  color: var(--biro);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-thickness var(--duration-fast) var(--ease-settle);
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.quiet {
+  color: inherit;
+  text-decoration-color: var(--biro);
+}

@@ -1,0 +1,92 @@
+/* Mobile: only the bar across the top. */
+.rail {
+  position: fixed;
+  z-index: var(--z-rail);
+  inset: 0 0 auto 0;
+  height: 2px;
+  pointer-events: none;
+}
+
+.bar {
+  height: 2px;
+  background: var(--biro);
+  transform-origin: left;
+}
+
+.track,
+.list,
+.label {
+  display: none;
+}
+
+/* Desktop: a rail on the left edge with a tick per section and the current label. */
+@media (min-width: 1280px) {
+  .rail {
+    inset: 50% auto auto calc(var(--margin) / 2 - 12px);
+    height: auto;
+    transform: translateY(-50%);
+    pointer-events: auto;
+  }
+
+  .bar {
+    display: none;
+  }
+
+  .track {
+    display: block;
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .fill {
+    height: 100%;
+    background: var(--print);
+    transform-origin: top;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    position: relative;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .tick {
+    width: 7px;
+    height: 1px;
+    background: var(--pencil);
+  }
+
+  .link[aria-current="location"] .tick {
+    width: 13px;
+    height: 2px;
+    background: var(--biro);
+  }
+
+  .label {
+    display: block;
+    position: absolute;
+    left: 28px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--step--2);
+    color: var(--pencil);
+    white-space: nowrap;
+  }
+}
